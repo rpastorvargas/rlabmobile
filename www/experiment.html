@@ -1,0 +1,713 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Test session</title>
+<link rel="stylesheet" type="text/css" href="css/experimentPanel.css">
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="js/rlab_websocket.js"></script>
+<script src="js/rlab_library.js"></script>
+<script src="js/utils.js"></script>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="js/labjs/LAB.min.js"></script>
+</head>
+
+
+<body>
+
+<script>
+
+    // http://10.211.80.177:9997/64B8D07F77B8536704A19B082F59B53C
+	// http://10.211.80.177:9002/64B8D07F77B8536704A19B082F59B53C/
+	var host = "192.168.2.101"; //"62.204.199.218";
+	var port = 9002; //9001;		
+	var id = "AF16D21AA9F380B701F58505BA6AA51E"; //"32D05B1F3681B5C8424001467B8649CD";
+	var username = "debug";
+	var experiment = "Open loop model for a Tank (NoView)"; //"Ball position";
+	var slot_time = 10;
+	
+	// Defines if the experiment is running
+	var running = false;
+	
+	// Objects for control lab
+	var lab = null; // new Lab(host,port,id);
+	// Test if REST service if alive !!!
+	var lab_name = null; // getLabName(lab);
+	// Experiment vars
+	var experiment_vars = null;
+	// Local  modules
+	var local_modules = null;
+	// Remote modules
+	var remote_modules = null;
+	var remote_systems = null;
+	// Web views
+	// Url indicating the view
+	var web_views = null;
+	var onReceiveDataViewHandlers = [];
+	
+	
+	// graphs
+	// Array with items including:
+	// chart, names associated to char, module and system
+	var charts = new Array();
+	var interactives_vars_containers = new Array();
+	
+	//options for graphs
+	var max_seconds_graphs = 20;
+	var smooth_lines = false; 
+	
+	// Last tab index selected
+	// First by default
+	var graph_tab_index = 0;
+	// Wait for openned connection
+	$("#startstopBtn").attr("disabled", "disabled");
+	
+	
+	// Register the unload event to close the session
+	//$(window).unload(onExit);
+	window.onbeforeunload = onExit;
+		
+	function onExit(){
+		//alert("Saliendo..");
+		rlab_closeSession(session);
+	}
+	
+	$(window).load(function(){
+  		$('#dvLoading').fadeOut(500);
+	});
+	
+	$(document).ready(function() {
+		
+		
+			
+		// Read expected parameters
+		host = getParameter("lab_ip");
+		port = getParameter("lab_port");		
+		id = getParameter("lab_id"); 
+		username = getParameter("lab_username");
+		experimentURIComponent = getParameter("lab_experiment"); 
+		// Decode !!!
+		experiment = decodeURIComponent(experimentURIComponent);
+		slot_time = getParameter("lab_slot_time");
+		
+		// Objects for control lab
+		lab = new Lab(host,port,id);
+		
+		// Test if REST service if alive !!!
+		lab_name = getLabName(lab);
+		
+		if (typeof lab_name === "undefined"){
+			lab_name = null;
+		}
+	
+		// And check for experiment name !!!
+		var experiments_names = getExperimentsNames(lab);
+		var experimentOk = false;
+		if (experiments_names != null){
+			for (var j=0; j<experiments_names.length; j++) {
+				if (experiments_names[j] == decodeURIComponent(experiment)){
+					experimentOk = true;
+					break;
+				}
+    		}
+
+		}
+		if (lab_name != null & experimentOk){
+			
+			// Store vars
+			experiment_vars = getVarsFromExperiment(lab,experiment);
+			// Store local modules names
+			local_modules = getLocalModulesNames(lab,experiment);
+			// Store remote modules names and system (REST service!!!)
+			remote_modules = getRemoteModulesNames(lab,experiment);
+			remote_systems = getRemoteModulesSystemsNames(lab,experiment);
+			
+			// Build charts interface
+			createCharts();
+			
+			// Build interactives interface
+			buildInteractives();
+			
+			// Build views
+			urls = getWebViewsUrlsFromExperiment(lab,experiment);
+			if (urls!=null && $.isArray(urls)){
+				web_views = urls;
+				var web_views_names = getWebViewsFromExperiment(lab,experiment);
+				var web_views_descriptions = getWebViewsDescriptionsFromExperiment(lab,experiment);
+				buildViews(web_views, web_views_names, web_views_descriptions);
+			}
+			
+			// Get the session and start a session
+			var session = getSession(host,port,username,experiment,slot_time,
+							  onDataReceived,onOpenCallback,
+							  onCloseCallback,onErrorCallback);
+			
+			// Create var dialog
+			$( "#var-dialog-modal" ).dialog({
+      			height: 200,
+      			modal: true,
+				autoOpen: false
+    		});
+			
+			$("#experiment_container").show();
+		} else {
+			$("#error_container").show();
+		}
+        
+		$("#preload").hide(); //Hide our preloader
+    });
+ 
+ 	function buildViews(web_views_url,web_views_names,web_views_descriptions){
+ 		if (web_views_url!=null){
+			var l = web_views_url.length;
+			for (i=0; i<l; i++){
+				var container_name = "View-"+i;
+				var ul_ref = $("#views_links_container");
+				ul_ref.append("<li><a href='#" + container_name + "'>" + 
+								web_views_names[i] + "</a></li>");
+				// Create div including the view
+				var html_element = '<div class="webview_description_css"><p>' + web_views_descriptions[i] + "</p>";
+				html_element += '<div id="' + container_name + '" class="view_style"></div>';
+				html_element += '</div>';
+				$('#views_container').append(html_element);
+				// Load html from view
+				$( "#"+container_name ).load( web_views_url[i], function() {
+					$( "#"+container_name).trigger('create');
+				});
+			}
+			// Build the tabs
+			$('#views_container').tabs();
+		} else {
+			$('#views_container').html("No views !!!");
+		}
+	}
+ 	
+	function createCharts(){
+		// Configure chart
+		// returns an array with items having the next structure
+		// module --> module name
+		// system --> system name (local if not remote module are included)
+		// names --> Array with variables names
+		// colors --> Array with colors values (RGB: #XXXXXX)
+		var graphs_info = getGraphsInfo(lab,experiment);
+		if (typeof graphs_info === "undefined"){
+			graphs_info = null;
+		}
+		if (graphs_info == null){
+			$('#graphs_container').html("No graphs !!!");
+		} else {
+			for (var i = 0; i<graphs_info.length; i++){
+				var container_name = "chart" + i;
+				// Add the link in tab
+				var ul_ref = $("#graphs_links_container");
+				var tab_title = createGraphTitle((graphs_info[i])['names']);
+				ul_ref.append("<li><a href='#" + container_name + "'>" + 
+								tab_title + "</a></li>");
+				// Create chart in the document !!!	
+				var html_element = '<div id="' + container_name + '" class="graph_style"></div>';
+				$('#graphs_container').append(html_element);
+				//$(document).add(html_element);
+				// Render !!!
+				chart = createChart(container_name,graphs_info[i],smooth_lines);
+				chart_info = new Array();
+				chart_info['chart'] = chart;
+				chart_info['names'] = (graphs_info[i])['names'];
+				chart_info['module'] = (graphs_info[i])['module'];
+				chart_info['system'] = (graphs_info[i])['system'];
+				charts.push(chart_info);
+			}
+			// Build the tabs
+			$('#graphs_container').tabs();
+			// Bind the select event to store the last graph selected !!!
+			$("#graphs_container").on("tabsactivate", function(e, ui) {
+				graph_tab_index = ui.newTab.index();
+			});
+		} 
+	}
+	
+	function buildInteractives(){
+		var localInteractives = false;
+		var remoteInteractives = false;
+		if (local_modules !=null){
+			for (i=0; i<local_modules.length; i++){
+				var module_name = local_modules[i];
+				var interactive_variables_module = 
+						getLocalInteractiveVariables(lab,experiment,module_name);
+				if (interactive_variables_module !=null){
+					createInteractiveVarsDiv(module_name,interactive_variables_module);
+					localInteractives = true;
+				}
+			}
+		}
+		
+		if (remote_modules !=null && remote_systems !=null){
+			for (i=0; i<remote_modules.length; i++){
+				var module_name = remote_modules[i];
+				var system_name = remote_systems[i];
+				var interactive_variables_module = 
+					getRemoteInteractiveVariables(lab,experiment,module_name,system_name);
+				if (interactive_variables_module !=null){
+					createInteractiveVarsDiv(module_name,interactive_variables_module);
+					remoteInteractives = true;
+				}
+			}
+		}
+		
+		if (localInteractives || renmoteInteractives){
+			// Finaly build the tabs
+			$( "#interactives_container").tabs();
+		} else {
+			$( "#interactives_container").html("No interactives variables defined for experiment");
+		}
+	}
+	
+ 	function startExp(lab,experiment){
+		
+		var ok = initExperiment(lab, experiment);
+		if (ok==true){
+			ok = startExperiment(lab,experiment);
+			if(ok==true){
+				resetChartsData();
+				$("#startstopBtn").text("Stop experiment");
+				running = true;
+				//chart.redraw();
+			} else {
+				$("#messages").text("Error starting experiment!!!");
+			}
+		} else {
+			$("#messages").text("Error initiating experiment!!!");
+		}
+		
+	}
+	
+	function stopExp(lab,experiment){
+		var ok = stopExperiment(lab, experiment);
+		if (ok==true){
+			$("#startstopBtn").text("Start experiment");
+			running = false;
+			
+		} else {
+			$("#messages").text("Error stopping experiment!!!");
+		}
+		
+	}
+	
+	function startstopBtnOnclick(event){
+		// Depending on state, do start of stop function
+		if (running==true){
+			$('#dvLoading').show();
+			$('#dvLoading').fadeOut(500);
+			stopExp(lab,experiment);
+			$("#preload").hide();
+			$('#img_running').attr('src','images/refresh.png');
+			$('#initial_msg').html("Press the Start experiment button...");
+		} else {
+			$('#dvLoading').show();
+			$('#dvLoading').fadeOut(500);
+			startExp(lab,experiment);
+			$("#preload").hide();
+			// Change image
+			$('#img_running').attr('src','images/running.gif');
+			$('#initial_msg').html("Experiment '" + experiment + "' is running now.");
+		}
+	}
+	
+	// Callback function used to get data received!!!
+	function onDataReceived(data){
+		//$("#data").html(data);
+		//console.log(data);
+		if (data.command=="data"){
+			var dataOnExp = data.data;
+			var time = dataOnExp.sealed_time;
+			time = time/1000;
+			formattedTime = formatSecondsAsTime(time,null);
+			$("#experiment_time").html("<strong>" + formattedTime + "</strong>");
+			// Add to graph
+			// Get the array of vars
+			var variables = dataOnExp.vars;
+			for (i=0; i<variables.length;i++){
+				single_var = variables[i];
+				for (j=0; j<charts.length; j++){
+					var names = (charts[j])['names'];
+					var var_name = single_var.name; 
+					var index = $.inArray(var_name, names);
+					if (index>=0){
+						var chart_to_add = (charts[j])['chart'];
+						// console.log("Addind var: " + var_name + " to " + $(chart_to_add.renderTo).attr("id"));
+						updateData(chart_to_add,var_name, single_var.value, time);
+					}
+				}
+				// Update interactive panels
+				var id_to_find = "#interactive-var-" + single_var.name;
+				for (j=0; j<interactives_vars_containers.length; j++){
+					if (interactives_vars_containers[j] == id_to_find){
+						$(id_to_find).html(single_var.name + ": " + single_var.value);
+						break;
+					}
+				}
+			}
+			try {
+			// Redraw charts, only if page of graphs is showing !!!
+				var activePage = $.mobile.activePage.attr("id");
+				if (activePage == "graphs_page"){
+					for (j=0; j<charts.length; j++){
+						// Only redraw the visible
+						if (graph_tab_index == j){
+							var chart_to_redraw = (charts[j])['chart'];
+							chart_to_redraw.redraw();
+						}
+					}
+				}
+			} catch(err){
+				console.error(err.message);
+			}
+
+			// Upddate interactive panels !!!
+			
+			// Views
+			if (variables.length>0){
+				// Call t
+				var l = onReceiveDataViewHandlers.length;
+				for(j=0; j<l;j++){
+					try
+					{
+						onReceiveDataViewHandlers[j](variables);
+					}
+					catch (error)
+					{
+						console.log("Error in Function " + onReceiveDataViewHandlers[j] + ": " + error);
+					}
+				}
+			}
+		}
+	}
+	
+	function onOpenCallback(readyState){
+		if (readyState == 1){
+			// Do the UI changes !!!
+			if (session.openned){
+				// Ready to start the experiment !!!
+				$("#startstopBtn").prop("disabled", false);
+				$("#messages").html("Ready to start experiment...");
+			}
+		} else {
+			$("#messages").html("Problem connecting with websockets.");
+		}
+	}
+	
+	function onCloseCallback(data){
+		$("#messages").html("Closing session: " + data);
+	}
+	
+	function onErrorCallback(error){
+		$("#messages").html("Error with websockets: " + error);
+	}
+	
+	function formatSecondsAsTime(secs, format) {
+		var hr  = Math.floor(secs / 3600);
+		var min = Math.floor((secs - (hr * 3600))/60);
+		var sec = Math.floor(secs - (hr * 3600) -  (min * 60));
+ 
+		if (hr < 10)   { hr    = "0" + hr; }
+		if (min < 10) { min = "0" + min; }
+		if (sec < 10)  { sec  = "0" + sec; }
+		if (hr)            { hr   = "00"; }
+ 
+		if (format != null) {
+			var formatted_time = format.replace('hh', hr);
+			formatted_time = formatted_time.replace('h', hr*1+""); // check for single hour formatting
+			formatted_time = formatted_time.replace('mm', min);
+			formatted_time = formatted_time.replace('m', min*1+""); // check for single minute formatting
+			formatted_time = formatted_time.replace('ss', sec);
+			formatted_time = formatted_time.replace('s', sec*1+""); // check for single second formatting
+			return formatted_time;
+		} else {
+			return hr + ':' + min + ':' + sec;
+		}
+	}
+	
+	function createGraphTitle(names){
+		var t = "No title";
+		if (names !=null){
+			t = "";
+			for (i=0; i<names.length; i++){
+				t += names[i];
+				if (i<names.length-1){
+					t+=",";
+				}
+			}
+		}
+		return t;
+	}
+	
+	function createChart(container_name, graph_info,smooth){
+		Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+		if (smooth){
+			type_graph = 'spline';
+		} else {
+			type_graph = 'line';
+		}
+		var title_graph = graph_info['module'];
+		chart = new Highcharts.Chart({
+            chart: {
+				type: type_graph,
+				renderTo: container_name,
+                marginRight: 10,
+            },
+            title: { text: title_graph },
+            xAxis: { title: { text: 'Time'}, type: 'linear' },
+            yAxis: {  title: { text: 'Values' } }, //, plotLines: createPlotLines(names,colors) },
+            exporting: {enabled: false}
+        });
+		createSeries(chart, graph_info['names'], graph_info['colors']);
+		return chart;
+	}// End of createChart!!!
+		
+	function createSeries(chart, names, colors){
+		var n = names.length;
+		for (index = 0; index < n; ++index) {
+    		serie = { name: names[index], lineWidth: 1, color: colors[index], marker:{enabled: false}, data:[] };
+			// Argument 1: serie options
+			// Argument 2: redraw: Boolean
+			// Defaults to true. Whether to redraw the chart after the series is added. See the redraw()method below.
+			// Argument 3: animation: Mixed
+			// Defaults to true. When true, the series' updating will be animated with default animation options. The animation can also be a configuration object with properties durationand easing.
+			chart.addSeries(serie, true, false);
+		} 
+	}
+	
+	function resetChartsData(){
+		for (j=0; j<charts.length; j++){
+		   var aChart = (charts[j])['chart'];
+		   if (aChart!=null){
+		   		resetSingleChartData(aChart);
+		   }
+		}
+	}
+	
+	function resetSingleChartData(chart){
+		var series = chart.series;
+		for (i=0;i<series.length;i++){
+			series[i].setData([]);
+		}
+	}
+		
+	function updateData(chart,series_name, value, time){
+		var series = chart.series;
+		var n = series.length;
+		for (index=0; index<n;++index){
+			var serie = series[index];
+			if(serie.name==series_name){
+				//serie.data.push([time,value]);
+				var v = parseFloat(value); 
+				// Value to add to the serie, redraw, shift
+				var shift = time>max_seconds_graphs;
+				// Last arguument: animation
+				serie.addPoint([time,v], false, shift,false);
+				//console.log("Associated with. " + serie.yAxis);
+				//console.log('Added value to ' + serie.name + ', total:' + serie.data.length);
+				break;
+			}
+		}
+	
+	}
+	
+	function createInteractiveVarsDiv(module_name,interactive_variables_module){
+		// TO DO
+		var container = $("#interactives_container");
+		// Add the tab 
+		var div_id = "tabs-" + module_name;
+		var ul_refs = $("#tabs_links_container");
+		ul_refs.append("<li><a href='#" + div_id + "'>" + module_name + "</a></li>");
+		// and the div
+		container.append("<div id=" + div_id + ">");
+		// Fill the div with interactive vars
+		if (interactive_variables_module != null){
+			var div_tab = $("#"+div_id);
+			for (i=0; i<interactive_variables_module.length; i++){
+				var variable_name = interactive_variables_module[i];
+				myVar = getVarByName(lab,variable_name,module_name);
+				var onclickproperty='onclick="changeVariableDialog(';
+				onclickproperty += "'" + myVar.name + "');return false;";
+				onclickproperty += '"';
+				var p_id = "interactive-var-" + myVar.name;
+				// Add to array, in order to get the 
+				interactives_vars_containers.push("#" + p_id);
+				var html_element = "<div> <p id='" + p_id + "'>" + myVar.name + ": " + myVar.value + 
+							"</p><button " + onclickproperty + ">Modify</button>" + 
+							"</div>";
+				div_tab.append(html_element);
+				$(document).add(html_element);
+			}
+		}
+		
+	}
+	
+	function changeVariableDialog(var_name){
+		// Modify html structure of dialog
+		// modifyDialog("#var-dialog-modal",var_name);
+		// $( "#var-dialog-modal" ).dialog( "open" );
+		$.mobile.changePage( "enter_lab_data.hmtl" );
+	}
+	
+	function modifyDialog(container,var_name){
+		var modified = false;
+		if (experiment_vars!=null){
+			// find the var to change
+			//offset_var = objectFindByKey(experiment_vars,'name','SP_OffsetPosition');
+			the_var = objectFindByKey(experiment_vars,'name',var_name);
+			if (the_var!=null){
+				var new_html = var_name + "(" + the_var.maxRange + "," + 
+							   the_var.minRange + " " + the_var.units + ")<br/>";
+				new_html += "<input type='text' id='value-" + var_name + "' ";
+				new_html += "value='" + the_var.value + "'/><br>";
+				new_html += "<button onclick='changeVarValue(";
+				new_html += '"#value-' + var_name + '","' + var_name + '");'; 
+				new_html += "return false'>Change</button>";	
+				
+				new_html += "<a href='#dialogPage' data-rel='dialog' data-role='button'>Open dialog</a>";	
+					
+				$(container).html(new_html);
+				modified = true;
+			}
+		}
+		return modified;
+	}
+	
+	function changeVarValue(text_value_container,var_name){
+		if (experiment_vars!=null){
+		    the_var = objectFindByKey(experiment_vars,'name',var_name);
+			if (the_var!=null){
+				new_value = $(text_value_container).val();
+				the_var.value = parseFloat(new_value);
+				var returned = setVarByName(lab,the_var,the_var.moduleName);
+				//var returned = setVarByName(lab,the_var);
+				// Close the dialog !!!
+				$("#var-dialog-modal").dialog("close");
+				// Get new value !!!
+				var new_var = getVarByName(lab,var_name,the_var.moduleName);
+				var p_id = "#interactive-var-" + myVar.name;
+				$(p_id).html(new_var.name + ": " + new_var.value);
+			}
+		}
+	}
+	
+	function objectFindByKey(array, key, value) {
+    	for (var i = 0; i < array.length; i++) {
+        	if (array[i][key] === value) {
+            	return array[i];
+        	}
+    	}
+    	return null;
+	}
+
+	
+</script>
+
+<!-- Home -->
+<div data-role="page" id="home">
+    <div data-role="content" class="main_container">
+        <div id="experiment_data">
+    		<button id="startstopBtn" disabled="true" onClick="startstopBtnOnclick();return false;">Start Experiment</button>
+    		<div id="experiment_time"></div>
+		</div>
+        
+        <div data-role="navbar" data-iconpos="top">
+            <ul>
+                <li>
+                    <a href="#graphs_page" data-transition="slidefade" data-theme="" data-icon="gear"
+                    class="ui-btn-active ui-state-persist">
+                        Graphs
+                    </a>
+                </li>
+                <li>
+                    <a href="#interactives_page" data-transition="fade" data-theme="" data-icon="edit"
+                    class="ui-btn-active ui-state-persist">
+                        Vars
+                    </a>
+                </li>
+                <li>
+                    <a href="#views_page" data-transition="fade" data-theme="" data-icon="plus"
+                    class="ui-btn-active ui-state-persist">
+                        Views
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div id="initial_content" data-role="content">
+        	<p><img id="img_running" src="images/refresh.png"/></p>
+        	<p id="initial_msg">Press the Start experiment button...</p>
+        </div>
+        <div id="messages" data-role="footer"></div>
+    </div>
+    
+    <div id="dvLoading"></div>
+</div>
+
+
+<!--
+<div id="experiment_container" style="display:none" class="main_container">
+-->
+
+<div data-role="page" id="graphs_page">
+	<div data-role="header">
+		<h1>Graphs</h1>
+	</div><!-- /header -->
+	<div id="graphs_container" data-role="content">
+    	<ul id="graphs_links_container"></ul>
+    </div>
+</div>
+	
+<div data-role="page" id="interactives_page">
+	<div data-role="header">
+		<h1>Interactive variables</h1>
+	</div><!-- /header -->
+	<div id="interactives_container" data-role="content">
+    	<ul id="tabs_links_container"></ul>
+        <div id="var-dialog-modal" title="Modify variable">
+  			<p>working!!!</p>
+		</div>
+    </div>
+     
+ </div>
+ 
+ <div data-role="page" id="views_page">
+	<div data-role="header">
+		<h1>Views</h1>
+	</div><!-- /header -->
+	<div id="views_container" data-role="content">
+    	<ul id="views_links_container"></ul>
+     </div>
+ </div>
+
+<div data-role="page" id="dialogPage">
+  <div data-role="header">
+    <h2>Dialog</h2>
+  </div>
+  <div data-role="content">
+    <p>I am a dialog</p>
+  </div>
+</div>
+
+    
+<div data-role="page" id="error_container" style="display:none">
+	Wrong lab connection parameters!!!
+</div>
+
+</body>
+</html>

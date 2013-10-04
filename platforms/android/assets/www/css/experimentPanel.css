@@ -1,0 +1,197 @@
+  @charset "utf-8";
+/* CSS Document */
+
+.main_container{
+	margin: 3px;
+	text-align:center;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 19px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 2px #000000;
+	-webkit-box-shadow: 0px 0px 2px #000000;
+	box-shadow: 0px 0px 2px #000000;
+}
+
+#initial_content{
+	text-align:center;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 19px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 5px #000000;
+	-webkit-box-shadow: 0px 0px 5px #000000;
+	box-shadow: 0px 0px 5px #000000;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	margin:10px;
+}
+
+#experiment_data{
+	/*width: 450px;*/
+	height:80px;
+	text-align:center;
+}
+
+#experiment_time{
+	float:right;
+	font:Georgia, "Times New Roman", Times, serif;
+	font-size:40px;
+}
+
+#startstopBtn{
+	margin: 0 auto;
+	color:#08233e;
+	font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+	font-size:70%;
+	padding:14px;
+	background:url(overlay.png) repeat-x center #ffcc00;
+	background-color:rgba(255,204,0,1);
+	border:1px solid #ffcc00;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border-bottom:1px solid #9f9f9f;
+	-moz-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+	-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+	box-shadow:inset 0 1px 0 rgba(255,255,255,0.5);
+	display:block;
+	width:100px;
+	float:left;
+}
+
+#messages{
+	margin-left: auto ;
+  	margin-right: auto ;
+	background-color:#A8A8A8;
+	text-align:center;
+	font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+	margin-bottom:5px;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+#interactives_container{
+	margin-left: auto ;
+  	margin-right: auto ;
+	/*background-color:#A8A8A8;*/
+	text-align:center;
+	font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+	font-size:80%;
+	display:block;
+}
+
+.interactive_var_div{
+	width:125px;
+	border-color:#808080;
+	-webkit-box-shadow: -6px 8px 5px rgba(50, 17, 27, 0.20);
+	-moz-box-shadow:    -6px 8px 5px rgba(50, 17, 27, 0.20);
+	box-shadow:         -6px 8px 5px rgba(50, 17, 27, 0.20);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding:5px;
+	display:inline-block;
+	margin:2px;
+}
+
+.webview_description_css{
+	font:"Arial Black", Gadget, sans-serif;
+	font-size:10px;
+	text-align:center;
+	background-color: #eeedff;
+	border: 1px solid #d8c7ff;
+	-moz-box-shadow: 0px 0px 1px #000000;
+	-webkit-box-shadow: 0px 0px 1px #000000;
+	box-shadow: 0px 0px 1px #000000;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+}
+
+.modify_button{
+	color: rgb(230, 230, 230);
+	font-size: 10px;
+	padding: 5px;
+	text-shadow: 0px -1px 0px rgba(30, 30, 30, 0.8);
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+	background: rgb(43, 110, 27);
+	background: -moz-linear-gradient(90deg, rgb(43, 110, 27) 7%, rgb(20, 136, 20) 70%);
+	background: -webkit-linear-gradient(90deg, rgb(43, 110, 27) 7%, rgb(20, 136, 20) 70%);
+	background: -o-linear-gradient(90deg, rgb(43, 110, 27) 7%, rgb(20, 136, 20) 70%);
+	background: -ms-linear-gradient(90deg, rgb(43, 110, 27) 7%, rgb(20, 136, 20) 70%);
+	background: linear-gradient(0deg, rgb(43, 110, 27) 7%, rgb(20, 136, 20) 70%);
+	-webkit-box-shadow: 0px 2px 1px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 2px 1px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 2px 1px rgba(50, 50, 50, 0.75);
+}
+
+#graphs_container{
+	margin-left: auto ;
+  	margin-right: auto ;
+	/* background-color:#A8A8A8; */
+	text-align:center;
+	font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+	font-size:80%;
+	display:block;
+}
+
+.graph_style{
+	width:100%;
+	margin: 0 auto; 
+	display: inline-block;
+}
+
+#error_container{
+	width:200px;
+	margin-left: auto ;
+  	margin-right: auto ;
+	padding: 10px;
+	text-align:center;
+	color: #FFF;
+	font-size:24px;
+	position: fixed;
+   	top: 50%;
+	-moz-border-radius: 25px;
+	-webkit-border-radius: 25px;
+	border-radius: 25px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 14px #000000;
+	-webkit-box-shadow: 0px 0px 14px #000000;
+	box-shadow: 0px 0px 14px #000000;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ff5c14', endColorstr = '#ff0f5e');
+	/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+	/*Element must have a height (not auto)*/
+	/*All filters must be placed together*/
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ff5c14', endColorstr = '#ff0f5e')";
+	/*Element must have a height (not auto)*/
+	/*All filters must be placed together*/
+	background-image: -moz-linear-gradient(top, #ff5c14, #ff0f5e);
+	background-image: -ms-linear-gradient(top, #ff5c14, #ff0f5e);
+	background-image: -o-linear-gradient(top, #ff5c14, #ff0f5e);
+	background-image: -webkit-gradient(linear, center top, center bottom, from(#ff5c14), to(#ff0f5e));
+	background-image: -webkit-linear-gradient(top, #ff5c14, #ff0f5e);
+	background-image: linear-gradient(top, #ff5c14, #ff0f5e);
+	-moz-background-clip: padding;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	/*Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners*/
+	/*--IE9 WILL PLACE THE FILTER ON TOP OF THE ROUNDED CORNERS--*/
+	opacity: 0.6;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 60);
+	/*-ms-filter must come before filter*/
+	filter: alpha(opacity = 60);
+	/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+	/*All filters must be placed together*/
+}
+
+#dvLoading{
+	background: url(../images/loading-bars.gif) no-repeat center center;
+   height: 30px;
+   width: 130px;
+   position: fixed;
+   z-index: 1000;
+   left: 50%;
+   top: 10%;
+   margin: -25px 0 0 -25px;
+}
