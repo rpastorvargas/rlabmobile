@@ -45,9 +45,5 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-		
-		if (id == "deviceready"){
-			window.location = "experiment.html";
-		}
     }
 };
