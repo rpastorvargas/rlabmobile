@@ -46,10 +46,39 @@ RLAB.CLIENT.MOBILE = ( function() {
 				}			
 			}
 		} else {
-            onErrorCheckingLabParameters("Invalid parameters to access to the laboratory/experiment");
+			if (lab_config != null & typeof lab_config == "object"){
+				_lab_id = lab_config.lab_id;
+				_lab_experiment_id  = lab_config.lab_experiment_id;
+				// Check for lab info
+				if (_lab_id == null){
+                	onErrorCheckingLabParameters("Invalid Laboratory reference from config file.");
+				} else {
+					ok = _checkLabInfo();
+					if (ok){
+						// Look for experiment_id
+						if (_lab_experiment_id != null && !(_lab_experiment_id == "")){
+							var ok = _checkExperimentInfo();
+							_experimentAccess = ok;
+							if (!ok) {
+								onErrorCheckingLabParameters("Invalid Experiment reference from config file: Experiment do not exist.");
+							}
+						} else {
+							// Only lab access
+							_labAccess = ok;
+						}
+					} else {
+						onErrorCheckingLabParameters("Invalid Laboratory reference from config file: Lab do not exist.");
+					}
+				}
+			} else {
+            	onErrorCheckingLabParameters("Invalid parameters to access to the laboratory/experiment");
+			}
         }
+		
+		
         return ok;
     }
+	
     
 	function _checkLabInfo(){
 		var _ok = false;

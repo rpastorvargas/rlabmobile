@@ -1,5 +1,6 @@
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\debug\anycpu\resources.pri
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\debug\anycpu\AppxManifest.xml
+D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\debug\anycpu\CordovaApp.Windows.build.appxrecipe
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\priconfig.xml
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\priconfig.xml.intermediate
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\layout.resfiles
@@ -12,3 +13,5 @@ D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\qualifiers.txt.intermediate
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\MultipleQualifiersPerDimensionFound.txt
 D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\ProjectArchitectures.txt
+D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\package.map.txt
+D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\windows\bld\_pkginfo.txt

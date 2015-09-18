@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="es.uned.scc.related.mobile.sg" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>RLABMobile</name>
+    <name>Signal Generator Lab</name>
     <description>
         RLAB Mobile experiment for Signal Generator Lab.
     </description>
@@ -46,5 +46,5 @@
     <gap:splash gap:platform="ios" height="768" src="res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
-    <content src="mobile.html?lab_id=51A94AE82FB25249854B9D8016DCD23B" />
+    <content src="mobile.html" />
 </widget>

@@ -3,7 +3,7 @@
     <Identity Name="es.uned.scc.related.mobile.sg" Publisher="CN=$username$" Version="1.0.0.0" />
     <mp:PhoneIdentity PhoneProductId="22d7ca80-5e20-11e5-8858-81f0825eacbc" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80" />
     <Properties>
-        <DisplayName>RLABMobile</DisplayName>
+        <DisplayName>Signal Generator Lab</DisplayName>
         <PublisherDisplayName>ReLaTeD Team</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
     </Properties>
@@ -15,8 +15,8 @@
         <Resource Language="x-generate" />
     </Resources>
     <Applications>
-        <Application Id="es.uned.scc.related.mobile.sg" StartPage="www/mobile.html?lab_id=51A94AE82FB25249854B9D8016DCD23B">
-            <m3:VisualElements BackgroundColor="transparent" Description="CordovaApp" DisplayName="RLABMobile" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+        <Application Id="es.uned.scc.related.mobile.sg" StartPage="www/mobile.html">
+            <m3:VisualElements BackgroundColor="transparent" Description="CordovaApp" DisplayName="Signal Generator Lab" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <m3:DefaultTile Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m3:ShowNameOnTiles>
                         <m3:ShowOn Tile="square150x150Logo" />

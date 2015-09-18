@@ -2,7 +2,7 @@
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
     <Identity Name="es.uned.scc.related.mobile.sg" Publisher="CN=$username$" Version="1.0.0.0" />
     <Properties>
-        <DisplayName>RLABMobile</DisplayName>
+        <DisplayName>Signal Generator Lab</DisplayName>
         <PublisherDisplayName>ReLaTeD Team</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
     </Properties>
@@ -14,8 +14,8 @@
         <Resource Language="x-generate" />
     </Resources>
     <Applications>
-        <Application Id="es.uned.scc.related.mobile.sg" StartPage="www/mobile.html?lab_id=51A94AE82FB25249854B9D8016DCD23B">
-            <m2:VisualElements BackgroundColor="#464646" Description="CordovaApp" DisplayName="RLABMobile" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\Square30x30Logo.png">
+        <Application Id="es.uned.scc.related.mobile.sg" StartPage="www/mobile.html">
+            <m2:VisualElements BackgroundColor="#464646" Description="CordovaApp" DisplayName="Signal Generator Lab" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\Square30x30Logo.png">
                 <m2:DefaultTile Square310x310Logo="images\Square310x310Logo.png" Square70x70Logo="images\Square70x70Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m2:ShowNameOnTiles>
                         <m2:ShowOn Tile="square150x150Logo" />

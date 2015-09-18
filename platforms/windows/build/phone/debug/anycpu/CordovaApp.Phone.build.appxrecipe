@@ -1,0 +1,1331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>RPV-PORTATIL</Machine>
+    <WindowsUser>Rafael</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>debug|anycpu</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>22d7ca80-5e20-11e5-8858-81f0825eacbc</PackageIdentityName>
+    <IntermediateOutputPath>D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\phone\bld\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\phone\debug\anycpu\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\SplashScreen.scale-100.png">
+      <PackagePath>images\SplashScreen.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\SplashScreenPhone.scale-240.png">
+      <PackagePath>images\SplashScreenPhone.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square150x150Logo.scale-100.png">
+      <PackagePath>images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square150x150Logo.scale-240.png">
+      <PackagePath>images\Square150x150Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square30x30Logo.scale-100.png">
+      <PackagePath>images\Square30x30Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square310x310Logo.scale-100.png">
+      <PackagePath>images\Square310x310Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square44x44Logo.scale-100.png">
+      <PackagePath>images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square44x44Logo.scale-240.png">
+      <PackagePath>images\Square44x44Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square70x70Logo.scale-100.png">
+      <PackagePath>images\Square70x70Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square71x71Logo.scale-100.png">
+      <PackagePath>images\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Square71x71Logo.scale-240.png">
+      <PackagePath>images\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\StoreLogo.scale-100.png">
+      <PackagePath>images\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\StoreLogo.scale-240.png">
+      <PackagePath>images\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Wide310x150Logo.scale-100.png">
+      <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\images\Wide310x150Logo.scale-240.png">
+      <PackagePath>images\Wide310x150Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\icon.png">
+      <PackagePath>www\icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\bola.png">
+      <PackagePath>www\images\bola.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\fondo.png">
+      <PackagePath>www\images\fondo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\go-bottom.png">
+      <PackagePath>www\images\go-bottom.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\go-top.png">
+      <PackagePath>www\images\go-top.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\html5.png">
+      <PackagePath>www\images\html5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\module.png">
+      <PackagePath>www\images\module.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\refresh.png">
+      <PackagePath>www\images\refresh.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\Tag.png">
+      <PackagePath>www\images\Tag.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\apple-touch-icon-114-precomposed.png">
+      <PackagePath>www\img\apple-touch-icon-114-precomposed.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\apple-touch-icon-144-precomposed.png">
+      <PackagePath>www\img\apple-touch-icon-144-precomposed.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\apple-touch-icon-57-precomposed.png">
+      <PackagePath>www\img\apple-touch-icon-57-precomposed.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\apple-touch-icon-72-precomposed.png">
+      <PackagePath>www\img\apple-touch-icon-72-precomposed.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\bg.png">
+      <PackagePath>www\img\bg.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\bola.png">
+      <PackagePath>www\img\bola.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\check_echo_websockets.png">
+      <PackagePath>www\img\check_echo_websockets.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\check_lab.png">
+      <PackagePath>www\img\check_lab.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\check_lab_websockets.png">
+      <PackagePath>www\img\check_lab_websockets.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\check_network.png">
+      <PackagePath>www\img\check_network.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\check_websockets.png">
+      <PackagePath>www\img\check_websockets.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\cordova.png">
+      <PackagePath>www\img\cordova.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\favicon.png">
+      <PackagePath>www\img\favicon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\fondo.png">
+      <PackagePath>www\img\fondo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\glyphicons-halflings-white.png">
+      <PackagePath>www\img\glyphicons-halflings-white.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\glyphicons-halflings.png">
+      <PackagePath>www\img\glyphicons-halflings.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\go-bottom.png">
+      <PackagePath>www\img\go-bottom.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\go-top.png">
+      <PackagePath>www\img\go-top.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\gradient.png">
+      <PackagePath>www\img\gradient.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\graph_block.png">
+      <PackagePath>www\img\graph_block.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\html5.png">
+      <PackagePath>www\img\html5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\IconLab.png">
+      <PackagePath>www\img\IconLab.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\InfoLab.png">
+      <PackagePath>www\img\InfoLab.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\logo.png">
+      <PackagePath>www\img\logo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\module.png">
+      <PackagePath>www\img\module.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\pass-icon.png">
+      <PackagePath>www\img\pass-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\refresh.png">
+      <PackagePath>www\img\refresh.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\related.png">
+      <PackagePath>www\img\related.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\related_logo_small.png">
+      <PackagePath>www\img\related_logo_small.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\Tag.png">
+      <PackagePath>www\img\Tag.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\user-icon.png">
+      <PackagePath>www\img\user-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icons\android-chrome-192x192.png">
+      <PackagePath>www\res\icons\android-chrome-192x192.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icons\favicon-16x16.png">
+      <PackagePath>www\res\icons\favicon-16x16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icons\favicon-32x32.png">
+      <PackagePath>www\res\icons\favicon-32x32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icons\favicon-96x96.png">
+      <PackagePath>www\res\icons\favicon-96x96.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\android\icon-36-ldpi.png">
+      <PackagePath>www\res\icon\android\icon-36-ldpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\android\icon-48-mdpi.png">
+      <PackagePath>www\res\icon\android\icon-48-mdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\android\icon-72-hdpi.png">
+      <PackagePath>www\res\icon\android\icon-72-hdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\android\icon-96-xhdpi.png">
+      <PackagePath>www\res\icon\android\icon-96-xhdpi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\bada-wac\icon-48-type5.png">
+      <PackagePath>www\res\icon\bada-wac\icon-48-type5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\bada-wac\icon-50-type3.png">
+      <PackagePath>www\res\icon\bada-wac\icon-50-type3.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\bada-wac\icon-80-type4.png">
+      <PackagePath>www\res\icon\bada-wac\icon-80-type4.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\bada\icon-128.png">
+      <PackagePath>www\res\icon\bada\icon-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\blackberry\icon-80.png">
+      <PackagePath>www\res\icon\blackberry\icon-80.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon-120x120.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon-120x120.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon-152x152.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon-152x152.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon-180x180.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon-180x180.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon-60x60.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon-60x60.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon-76x76.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon-76x76.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon-precomposed.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon-precomposed.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\apple-touch-icon.png">
+      <PackagePath>www\res\icon\ios\apple-touch-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\icon-57-2x.png">
+      <PackagePath>www\res\icon\ios\icon-57-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\icon-57.png">
+      <PackagePath>www\res\icon\ios\icon-57.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\icon-72-2x.png">
+      <PackagePath>www\res\icon\ios\icon-72-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\ios\icon-72.png">
+      <PackagePath>www\res\icon\ios\icon-72.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\tizen\icon-128.png">
+      <PackagePath>www\res\icon\tizen\icon-128.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\webos\icon-64.png">
+      <PackagePath>www\res\icon\webos\icon-64.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\icon-173-tile.png">
+      <PackagePath>www\res\icon\windows-phone\icon-173-tile.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\icon-173-tile_.png">
+      <PackagePath>www\res\icon\windows-phone\icon-173-tile_.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\icon-48.png">
+      <PackagePath>www\res\icon\windows-phone\icon-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\icon-62-tile.png">
+      <PackagePath>www\res\icon\windows-phone\icon-62-tile.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\largetile.png">
+      <PackagePath>www\res\icon\windows-phone\largetile.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\mediumtile.png">
+      <PackagePath>www\res\icon\windows-phone\mediumtile.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\mstile-150x150.png">
+      <PackagePath>www\res\icon\windows-phone\mstile-150x150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\mstile-310x150.png">
+      <PackagePath>www\res\icon\windows-phone\mstile-310x150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\mstile-70x70.png">
+      <PackagePath>www\res\icon\windows-phone\mstile-70x70.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icon\windows-phone\smalltile.png">
+      <PackagePath>www\res\icon\windows-phone\smalltile.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-hdpi-landscape.png">
+      <PackagePath>www\res\screen\android\screen-hdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-hdpi-portrait.png">
+      <PackagePath>www\res\screen\android\screen-hdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-ldpi-landscape.png">
+      <PackagePath>www\res\screen\android\screen-ldpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-ldpi-portrait.png">
+      <PackagePath>www\res\screen\android\screen-ldpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-mdpi-landscape.png">
+      <PackagePath>www\res\screen\android\screen-mdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-mdpi-portrait.png">
+      <PackagePath>www\res\screen\android\screen-mdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-xhdpi-landscape.png">
+      <PackagePath>www\res\screen\android\screen-xhdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\android\screen-xhdpi-portrait.png">
+      <PackagePath>www\res\screen\android\screen-xhdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\bada-wac\screen-type3.png">
+      <PackagePath>www\res\screen\bada-wac\screen-type3.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\bada-wac\screen-type4.png">
+      <PackagePath>www\res\screen\bada-wac\screen-type4.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\bada-wac\screen-type5.png">
+      <PackagePath>www\res\screen\bada-wac\screen-type5.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\bada\screen-portrait.png">
+      <PackagePath>www\res\screen\bada\screen-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\blackberry\screen-225.png">
+      <PackagePath>www\res\screen\blackberry\screen-225.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-ipad-landscape-2x.png">
+      <PackagePath>www\res\screen\ios\screen-ipad-landscape-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-ipad-landscape.png">
+      <PackagePath>www\res\screen\ios\screen-ipad-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-ipad-portrait-2x.png">
+      <PackagePath>www\res\screen\ios\screen-ipad-portrait-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-ipad-portrait.png">
+      <PackagePath>www\res\screen\ios\screen-ipad-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-iphone-landscape-2x.png">
+      <PackagePath>www\res\screen\ios\screen-iphone-landscape-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-iphone-landscape.png">
+      <PackagePath>www\res\screen\ios\screen-iphone-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-iphone-portrait-2x.png">
+      <PackagePath>www\res\screen\ios\screen-iphone-portrait-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-iphone-portrait-568h-2x.png">
+      <PackagePath>www\res\screen\ios\screen-iphone-portrait-568h-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\ios\screen-iphone-portrait.png">
+      <PackagePath>www\res\screen\ios\screen-iphone-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\webos\screen-64.png">
+      <PackagePath>www\res\screen\webos\screen-64.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\your_new_images\favicon-16x16.png">
+      <PackagePath>www\res\your_new_images\favicon-16x16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\your_new_images\favicon-32x32.png">
+      <PackagePath>www\res\your_new_images\favicon-32x32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\your_new_images\favicon-96x96.png">
+      <PackagePath>www\res\your_new_images\favicon-96x96.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\checks.html">
+      <PackagePath>www\checks.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\debug.html">
+      <PackagePath>www\debug.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\experiment.html">
+      <PackagePath>www\experiment.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\experiment_mobile.html">
+      <PackagePath>www\experiment_mobile.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\index_old.html">
+      <PackagePath>www\index_old.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\sample.html">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\sample.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\lab.html">
+      <PackagePath>www\lab.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\labs.html">
+      <PackagePath>www\labs.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\login.html">
+      <PackagePath>www\login.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\login_related.html">
+      <PackagePath>www\login_related.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\login_v2.html">
+      <PackagePath>www\login_v2.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\mobile.html">
+      <PackagePath>www\mobile.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\single_experiment.html">
+      <PackagePath>www\single_experiment.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec.html">
+      <PackagePath>www\spec.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\test_echo.html">
+      <PackagePath>www\test_echo.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\ui_designer.html">
+      <PackagePath>www\ui_designer.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\config.xml">
+      <PackagePath>www\config.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\your_new_images\browserconfig.xml">
+      <PackagePath>www\res\your_new_images\browserconfig.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\config.xml">
+      <PackagePath>config.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\conf\lab_config.js">
+      <PackagePath>www\conf\lab_config.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova-js-src\exec.js">
+      <PackagePath>www\cordova-js-src\exec.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova-js-src\platform.js">
+      <PackagePath>www\cordova-js-src\platform.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova.android.js">
+      <PackagePath>www\cordova.android.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova.ios.js">
+      <PackagePath>www\cordova.ios.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova.wp8.js">
+      <PackagePath>www\cordova.wp8.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\bootstrap.min.js">
+      <PackagePath>www\js\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\drawer\jquery.drawer.min.js">
+      <PackagePath>www\js\drawer\jquery.drawer.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\html5shiv.js">
+      <PackagePath>www\js\html5shiv.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\index.js">
+      <PackagePath>www\js\index.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\jquery-1.11.2.min.js">
+      <PackagePath>www\js\jquery-1.11.2.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\jquery.base64.js">
+      <PackagePath>www\js\jquery.base64.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\jquery.min.js">
+      <PackagePath>www\js\jquery.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\jquery.soap.js">
+      <PackagePath>www\js\jquery.soap.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\jquery.xdomainajax.js">
+      <PackagePath>www\js\jquery.xdomainajax.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\jquery.xml2json.js">
+      <PackagePath>www\js\jquery.xml2json.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\lab.js">
+      <PackagePath>www\js\lab.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\labjs\LAB-debug.min.js">
+      <PackagePath>www\js\labjs\LAB-debug.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\labjs\LAB.js">
+      <PackagePath>www\js\labjs\LAB.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\labjs\LAB.min.js">
+      <PackagePath>www\js\labjs\LAB.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\labjs\LAB.src.js">
+      <PackagePath>www\js\labjs\LAB.src.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\labs_main.js">
+      <PackagePath>www\js\labs_main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\lab_main.js">
+      <PackagePath>www\js\lab_main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\less-1.3.3.min.js">
+      <PackagePath>www\js\less-1.3.3.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\main.js">
+      <PackagePath>www\js\main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\main_index.js">
+      <PackagePath>www\js\main_index.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\main_mobile.js">
+      <PackagePath>www\js\main_mobile.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\modernizr.js">
+      <PackagePath>www\js\modernizr.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\mscorlib.js">
+      <PackagePath>www\js\mscorlib.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\PerfectWidgets.js">
+      <PackagePath>www\js\PerfectWidgets.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\play.js">
+      <PackagePath>www\js\play.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_editors.js">
+      <PackagePath>www\js\rlab_editors.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_library.js">
+      <PackagePath>www\js\rlab_library.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_services_hash.js">
+      <PackagePath>www\js\rlab_services_hash.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_services_sessions.js">
+      <PackagePath>www\js\rlab_services_sessions.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_services_systems.js">
+      <PackagePath>www\js\rlab_services_systems.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_services_tokens.js">
+      <PackagePath>www\js\rlab_services_tokens.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_services_users.js">
+      <PackagePath>www\js\rlab_services_users.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_services_watchdogsignal.js">
+      <PackagePath>www\js\rlab_services_watchdogsignal.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_var.js">
+      <PackagePath>www\js\rlab_var.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_websocket.js">
+      <PackagePath>www\js\rlab_websocket.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\rlab_web_auth.js">
+      <PackagePath>www\js\rlab_web_auth.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\single_experiment_main.js">
+      <PackagePath>www\js\single_experiment_main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\events.js">
+      <PackagePath>www\js\sockets-io\events.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\io.js">
+      <PackagePath>www\js\sockets-io\io.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\json.js">
+      <PackagePath>www\js\sockets-io\json.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\namespace.js">
+      <PackagePath>www\js\sockets-io\namespace.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\parser.js">
+      <PackagePath>www\js\sockets-io\parser.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\socket.js">
+      <PackagePath>www\js\sockets-io\socket.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transport.js">
+      <PackagePath>www\js\sockets-io\transport.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transports\flashsocket.js">
+      <PackagePath>www\js\sockets-io\transports\flashsocket.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transports\htmlfile.js">
+      <PackagePath>www\js\sockets-io\transports\htmlfile.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transports\jsonp-polling.js">
+      <PackagePath>www\js\sockets-io\transports\jsonp-polling.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transports\websocket.js">
+      <PackagePath>www\js\sockets-io\transports\websocket.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transports\xhr-polling.js">
+      <PackagePath>www\js\sockets-io\transports\xhr-polling.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\transports\xhr.js">
+      <PackagePath>www\js\sockets-io\transports\xhr.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\util.js">
+      <PackagePath>www\js\sockets-io\util.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\swfobject.js">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\swfobject.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\web_socket.js">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\web_socket.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\utils.js">
+      <PackagePath>www\js\utils.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec\helper.js">
+      <PackagePath>www\spec\helper.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec\index.js">
+      <PackagePath>www\spec\index.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec\lib\jasmine-1.2.0\jasmine-html.js">
+      <PackagePath>www\spec\lib\jasmine-1.2.0\jasmine-html.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec\lib\jasmine-1.2.0\jasmine.js">
+      <PackagePath>www\spec\lib\jasmine-1.2.0\jasmine.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\bootstrap-theme.css">
+      <PackagePath>www\css\bootstrap-theme.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\bootstrap-theme.min.css">
+      <PackagePath>www\css\bootstrap-theme.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\bootstrap.css">
+      <PackagePath>www\css\bootstrap.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\bootstrap.min.css">
+      <PackagePath>www\css\bootstrap.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\bootstrap.min_OLD.css">
+      <PackagePath>www\css\bootstrap.min_OLD.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\bootstrap_OLD.css">
+      <PackagePath>www\css\bootstrap_OLD.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\drawer.min.css">
+      <PackagePath>www\css\drawer.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\experimentPanel.css">
+      <PackagePath>www\css\experimentPanel.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\font-awesome.css">
+      <PackagePath>www\css\font-awesome.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\font-awesome.min.css">
+      <PackagePath>www\css\font-awesome.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\index.css">
+      <PackagePath>www\css\index.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\login.css">
+      <PackagePath>www\css\login.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\offcanvas.css">
+      <PackagePath>www\css\offcanvas.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\css\style.css">
+      <PackagePath>www\css\style.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec\lib\jasmine-1.2.0\jasmine.css">
+      <PackagePath>www\spec\lib\jasmine-1.2.0\jasmine.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\favicon.ico">
+      <PackagePath>www\favicon.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icons\favicon.ico">
+      <PackagePath>www\res\icons\favicon.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\your_new_images\favicon.ico">
+      <PackagePath>www\res\your_new_images\favicon.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\fontawesome-webfont.eot">
+      <PackagePath>www\fonts\fontawesome-webfont.eot</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\glyphicons-halflings-regular.eot">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.eot</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\fontawesome-webfont.svg">
+      <PackagePath>www\fonts\fontawesome-webfont.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\glyphicons-halflings-regular.svg">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\fontawesome-webfont.ttf">
+      <PackagePath>www\fonts\fontawesome-webfont.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\glyphicons-halflings-regular.ttf">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\fontawesome-webfont.woff">
+      <PackagePath>www\fonts\fontawesome-webfont.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\glyphicons-halflings-regular.woff">
+      <PackagePath>www\fonts\glyphicons-halflings-regular.woff</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\fonts\FontAwesome.otf">
+      <PackagePath>www\fonts\FontAwesome.otf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\bola.jpg">
+      <PackagePath>www\images\bola.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\bola.jpg">
+      <PackagePath>www\img\bola.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\motor.jpg">
+      <PackagePath>www\img\motor.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\view_block.jpg">
+      <PackagePath>www\img\view_block.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\windows-phone\screen-portrait.jpg">
+      <PackagePath>www\res\screen\windows-phone\screen-portrait.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\loading-bars.gif">
+      <PackagePath>www\images\loading-bars.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\loading.gif">
+      <PackagePath>www\images\loading.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\images\running.gif">
+      <PackagePath>www\images\running.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\loading-bars.gif">
+      <PackagePath>www\img\loading-bars.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\loading.gif">
+      <PackagePath>www\img\loading.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\related_splash.gif">
+      <PackagePath>www\img\related_splash.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\img\running.gif">
+      <PackagePath>www\img\running.gif</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\.npmignore">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\.npmignore</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\build.sh">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\build.sh</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\adobe\net\proxies\RFC2817Socket.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\adobe\net\proxies\RFC2817Socket.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\gsolo\encryption\MD5.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\gsolo\encryption\MD5.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\cert\MozillaRootCertificates.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\cert\MozillaRootCertificates.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\cert\X509Certificate.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\cert\X509Certificate.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\cert\X509CertificateCollection.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\cert\X509CertificateCollection.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\Crypto.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\Crypto.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\HMAC.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\HMAC.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\IHash.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\IHash.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\IHMAC.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\IHMAC.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\MAC.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\MAC.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\MD2.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\MD2.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\MD5.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\MD5.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHA1.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHA1.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHA224.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHA224.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHA256.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHA256.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHABase.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\hash\SHABase.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\ARC4.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\ARC4.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\IPRNG.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\IPRNG.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\Random.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\Random.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\TLSPRF.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\prng\TLSPRF.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\rsa\RSAKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\rsa\RSAKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\AESKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\AESKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\BlowFishKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\BlowFishKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CBCMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CBCMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CFB8Mode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CFB8Mode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CFBMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CFBMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CTRMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\CTRMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\DESKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\DESKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\ECBMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\ECBMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\ICipher.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\ICipher.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IPad.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IPad.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IStreamCipher.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IStreamCipher.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\ISymmetricKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\ISymmetricKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IVMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\IVMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\NullPad.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\NullPad.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\OFBMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\OFBMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\PKCS5.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\PKCS5.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\SimpleIVMode.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\SimpleIVMode.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\SSLPad.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\SSLPad.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\TLSPad.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\TLSPad.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\TripleDESKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\TripleDESKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\XTeaKey.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\XTeaKey.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\AESKeyTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\AESKeyTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\ARC4Test.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\ARC4Test.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\BigIntegerTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\BigIntegerTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\BlowFishKeyTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\BlowFishKeyTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CBCModeTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CBCModeTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CFB8ModeTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CFB8ModeTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CFBModeTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CFBModeTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CTRModeTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\CTRModeTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\DESKeyTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\DESKeyTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\ECBModeTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\ECBModeTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\HMACTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\HMACTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\ITestHarness.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\ITestHarness.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\MD2Test.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\MD2Test.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\MD5Test.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\MD5Test.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\OFBModeTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\OFBModeTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\RSAKeyTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\RSAKeyTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\SHA1Test.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\SHA1Test.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\SHA224Test.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\SHA224Test.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\SHA256Test.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\SHA256Test.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\TestCase.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\TestCase.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\TLSPRFTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\TLSPRFTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\TripleDESKeyTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\TripleDESKeyTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\XTeaKeyTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tests\XTeaKeyTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\BulkCiphers.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\BulkCiphers.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\CipherSuites.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\CipherSuites.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\IConnectionState.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\IConnectionState.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\ISecurityParameters.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\ISecurityParameters.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\KeyExchanges.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\KeyExchanges.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\MACs.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\MACs.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\SSLConnectionState.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\SSLConnectionState.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\SSLEvent.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\SSLEvent.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\SSLSecurityParameters.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\SSLSecurityParameters.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSConfig.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSConfig.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSConnectionState.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSConnectionState.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSEngine.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSEngine.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSError.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSError.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSEvent.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSEvent.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSSecurityParameters.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSSecurityParameters.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSSocket.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSSocket.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSSocketEvent.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSSocketEvent.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSTest.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\tls\TLSTest.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\BarrettReduction.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\BarrettReduction.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\BigInteger.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\BigInteger.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\bi_internal.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\bi_internal.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\ClassicReduction.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\ClassicReduction.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\IReduction.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\IReduction.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\MontgomeryReduction.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\MontgomeryReduction.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\NullReduction.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\math\NullReduction.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\ArrayUtil.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\ArrayUtil.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\Base64.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\Base64.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\ByteString.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\ByteString.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\DER.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\DER.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\IAsn1Type.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\IAsn1Type.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Integer.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Integer.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\ObjectIdentifier.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\ObjectIdentifier.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\OID.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\OID.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\PEM.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\PEM.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\PrintableString.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\PrintableString.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Sequence.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Sequence.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Set.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Set.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Type.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\Type.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\UTCTime.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\der\UTCTime.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\Hex.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\Hex.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\Memory.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\util\Memory.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\IWebSocketLogger.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\IWebSocketLogger.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocket.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocket.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocketEvent.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocketEvent.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocketMain.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocketMain.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocketMainInsecure.as">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\WebSocketMainInsecure.as</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\aeskey.pl">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\aeskey.pl</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\dump.txt">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\flash-src\com\hurlant\crypto\symmetric\dump.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\README.md">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\screen\tizen\README.md">
+      <PackagePath>www\res\screen\tizen\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\WebSocketMain.swf">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\WebSocketMain.swf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\js\sockets-io\vendor\web-socket-js\WebSocketMainInsecure.zip">
+      <PackagePath>www\js\sockets-io\vendor\web-socket-js\WebSocketMainInsecure.zip</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\icons.zip">
+      <PackagePath>www\res\icons.zip</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\alerts.less">
+      <PackagePath>www\less\alerts.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\badges.less">
+      <PackagePath>www\less\badges.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\bootstrap.less">
+      <PackagePath>www\less\bootstrap.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\bordered-pulled.less">
+      <PackagePath>www\less\bordered-pulled.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\breadcrumbs.less">
+      <PackagePath>www\less\breadcrumbs.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\button-groups.less">
+      <PackagePath>www\less\button-groups.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\buttons.less">
+      <PackagePath>www\less\buttons.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\carousel.less">
+      <PackagePath>www\less\carousel.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\close.less">
+      <PackagePath>www\less\close.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\code.less">
+      <PackagePath>www\less\code.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\component-animations.less">
+      <PackagePath>www\less\component-animations.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\core.less">
+      <PackagePath>www\less\core.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\dropdowns.less">
+      <PackagePath>www\less\dropdowns.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\fixed-width.less">
+      <PackagePath>www\less\fixed-width.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\font-awesome.less">
+      <PackagePath>www\less\font-awesome.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\forms.less">
+      <PackagePath>www\less\forms.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\glyphicons.less">
+      <PackagePath>www\less\glyphicons.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\grid.less">
+      <PackagePath>www\less\grid.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\icons.less">
+      <PackagePath>www\less\icons.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\input-groups.less">
+      <PackagePath>www\less\input-groups.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\jumbotron.less">
+      <PackagePath>www\less\jumbotron.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\labels.less">
+      <PackagePath>www\less\labels.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\larger.less">
+      <PackagePath>www\less\larger.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\list-group.less">
+      <PackagePath>www\less\list-group.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\list.less">
+      <PackagePath>www\less\list.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\media.less">
+      <PackagePath>www\less\media.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\mixins.less">
+      <PackagePath>www\less\mixins.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\modals.less">
+      <PackagePath>www\less\modals.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\navbar.less">
+      <PackagePath>www\less\navbar.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\navs.less">
+      <PackagePath>www\less\navs.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\normalize.less">
+      <PackagePath>www\less\normalize.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\pager.less">
+      <PackagePath>www\less\pager.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\pagination.less">
+      <PackagePath>www\less\pagination.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\panels.less">
+      <PackagePath>www\less\panels.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\path.less">
+      <PackagePath>www\less\path.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\popovers.less">
+      <PackagePath>www\less\popovers.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\print.less">
+      <PackagePath>www\less\print.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\progress-bars.less">
+      <PackagePath>www\less\progress-bars.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\responsive-utilities.less">
+      <PackagePath>www\less\responsive-utilities.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\rotated-flipped.less">
+      <PackagePath>www\less\rotated-flipped.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\scaffolding.less">
+      <PackagePath>www\less\scaffolding.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\spinning.less">
+      <PackagePath>www\less\spinning.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\stacked.less">
+      <PackagePath>www\less\stacked.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\tables.less">
+      <PackagePath>www\less\tables.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\theme.less">
+      <PackagePath>www\less\theme.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\thumbnails.less">
+      <PackagePath>www\less\thumbnails.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\tooltip.less">
+      <PackagePath>www\less\tooltip.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\type.less">
+      <PackagePath>www\less\type.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\utilities.less">
+      <PackagePath>www\less\utilities.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\variables.less">
+      <PackagePath>www\less\variables.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\less\wells.less">
+      <PackagePath>www\less\wells.less</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\res\your_new_images\manifest.json">
+      <PackagePath>www\res\your_new_images\manifest.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\font-awesome.scss">
+      <PackagePath>www\scss\font-awesome.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_bordered-pulled.scss">
+      <PackagePath>www\scss\_bordered-pulled.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_core.scss">
+      <PackagePath>www\scss\_core.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_fixed-width.scss">
+      <PackagePath>www\scss\_fixed-width.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_icons.scss">
+      <PackagePath>www\scss\_icons.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_larger.scss">
+      <PackagePath>www\scss\_larger.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_list.scss">
+      <PackagePath>www\scss\_list.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_mixins.scss">
+      <PackagePath>www\scss\_mixins.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_path.scss">
+      <PackagePath>www\scss\_path.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_rotated-flipped.scss">
+      <PackagePath>www\scss\_rotated-flipped.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_spinning.scss">
+      <PackagePath>www\scss\_spinning.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_stacked.scss">
+      <PackagePath>www\scss\_stacked.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\scss\_variables.scss">
+      <PackagePath>www\scss\_variables.scss</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\www\spec\lib\jasmine-1.2.0\MIT.LICENSE">
+      <PackagePath>www\spec\lib\jasmine-1.2.0\MIT.LICENSE</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\users\rafa\RLAB_Xml\HTML5\phonegap\rlabmobile\platforms\windows\build\phone\debug\anycpu\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Phone.WinJS.2.1\1.0\">
+      <Name>Microsoft.Phone.WinJS.2.1</Name>
+      <Version>1.0.9651.0</Version>
+      <Architecture>Neutral</Architecture>
+      <FrameworkIdentity>Name=Microsoft.Phone.WinJS.2.1, MinVersion=1.0.9651.0</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\WindowsPhoneApp\v8.1\ExtensionSDKs\Microsoft.Phone.WinJS.2.1\1.0\Microsoft.Phone.WinJS.2.1.appx</AppxLocation>
+      <MoreInfo>http://go.microsoft.com/fwlink/%3fLinkId=260891</MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>
