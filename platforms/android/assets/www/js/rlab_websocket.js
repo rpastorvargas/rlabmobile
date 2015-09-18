@@ -1,6 +1,7 @@
 // Websocket based Session Control
 
 var session = null;
+var alive_signal = 60000; // 1 minute
 // Create a Singleton function
 function getSession(host,port,userName,experimentName,slotTime,
 				 onDataReceived,onOpenCallback,
@@ -26,12 +27,25 @@ function Session(host,port,userName,experimentName,slotTime,
 		this.data_format = 1;
 		this.data = null;
 		this.openned = false;
+		this.timerId = null;
 		this.onDataReceived = [onDataReceived];
 		this.onOpenCallback = [onOpenCallback];
 		this.onCloseCallback = [onCloseCallback];
 		this.onErrorCallback = [onErrorCallback];
 		try {
-	    	this._ws = new WebSocket("ws://" + host + ":" + port +"/");
+			// Set the ws plugin options
+			// dor 
+			if (WebSocket.pluginOptions) {
+				WebSocket.pluginOptions = {
+					// Default values override for ws plugin
+					//origin: 'http://websocket-is-fun.com',
+					// maxConnectTime: 20000,                // 20sec
+					maxTextMessageSize: 65000     // 64Kb, 32768 -->32kb
+					// maxBinaryMessageSize: 32768           // 32kb
+				}
+			}
+			console.log("Opening websocket: ws://" + host + ":" + port +"/");
+			this._ws = new WebSocket("ws://" + host + ":" + port +"/");
 	    	this._ws.onopen = this._onopen;
         	this._ws.onmessage = this._onmessage;
         	this._ws.onclose = this._onclose;
@@ -60,15 +74,18 @@ function Session(host,port,userName,experimentName,slotTime,
 		this.onErrorCallback.push(myCallback);
 	}
 	
-	Session.prototype._onopen = function(){          
-        if (this.readyState == 0){
+	Session.prototype._onopen = function(){ 
+		if (this.readyState == 0){
 			// CONNECTING
 			// alert("Connecting");
 			this.websocket_openned = false;
 			this.session.openned = false;
 		} else if (this.readyState == 1){
+			// alert("Openning session");
 			// Open the sesion (connection using Websocket!!!
 			rlab_openSession(this.session);
+			// Start alive timing
+			this.timerId = setInterval(sendAliveSignal, alive_signal);
 			// Session is open. ready to flow messages
 			this.session.openned = true;
 			this.websocket_openned = true;
@@ -93,16 +110,29 @@ function Session(host,port,userName,experimentName,slotTime,
 	};
  
     Session.prototype._onclose = function(m) {
-       	for (var i = 0; i < this.session.onCloseCallback.length; i++) {
-    		this.session.onCloseCallback[i](object);
+		// Stop timer
+		clearInterval(this.timerId);
+		// Inform to clients
+		for (var i = 0; i < this.session.onCloseCallback.length; i++) {
+    		this.session.onCloseCallback[i](m);
 		}
     };
  
     Session.prototype._onerror = function(e) {
+		//alert("Error with websocket: " + e);
         for (var i = 0; i < onErrorCallback.length; i++) {
-    		this.session.onErrorCallback[i](object);
+    		this.session.onErrorCallback[i](e);
 		}
     };
+	
+function sendAliveSignal(){
+	// Send an alive message
+	// Create json command
+	var command = { command: "alive" };
+	var json_data = JSON.stringify(command);	
+	console.log("send alive..");			  
+	session._ws.send(json_data);
+}
 	
 
 function rlab_openSession(session){
@@ -137,6 +167,15 @@ function rlab_echo(){
 	session._ws.send(json_data);
 }
 
+function rlab_sendTokenIdSession(tokenId){
+	// Create json command
+	var command = { command: "token_id", user: "",
+					  experiment: tokenId,
+					  slot_time: -1,
+					  data_format: 1 };
+	var json_data = JSON.stringify(command);				  
+	session._ws.send(json_data);
+}
 
 
 function storeInSessionStorage(session){

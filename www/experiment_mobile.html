@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web Experiment Client for RELATED labs</title>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web Experiment Client for RELATED labs">
+  <meta name="author" content="Rafael Pastor Vargas">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/experimentPanel.css">
+    <link rel="stylesheet" type="text/css" href="css/offcanvas.css">
+    <!-- drawer css -->
+    <link rel="stylesheet" type="text/css" href="css/drawer.min.css">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/related_logo_small.png">
+     
+  	
+    <style>
+		
+		html,body {
+			height:100%
+		}
+		
+		.container{
+			min-height:100%;
+			overflow:hidden;
+		}
+		
+		.center {
+     		margin-left: auto;
+     		margin-right: auto;
+			text-align:center;
+		}
+		
+		.btn-toolbar {
+			padding-left:2px;
+			padding-top:5px;
+    		text-align:center;
+			padding-bottom:5px;
+			margin-bottom:2px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		
+		.btn-toolbar .btn-group {
+			float: none;
+		}
+		
+		.modal-header{
+			margin: 1px;
+			padding: 5px;
+		}
+		.modal-body{
+			margin:2px;
+			padding:5px;
+		}
+		
+		.modal-footer{
+			margin: 1px;
+			padding: 5px;
+		}
+        .icon-circle-big {
+            background: red;
+            width: 2em;
+            height: 2em;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 2em;
+            vertical-align: middle;
+        }
+        
+        .icon-circle-small {
+            background: red;
+            width: 1.6em;
+            height: 1.6em;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 1.6em;
+            vertical-align: middle;
+        }
+		
+	</style>
+    
+	<script>
+	function sendDataToExperiment(rlab_vars){
+		related.send(rlab_vars);
+	}
+	</script>
+
+</head>
+
+<body> 
+
+    <!-- Main content -->   
+    <div class="container-fluid">
+
+	    <div class="header row clearfix">
+            <div class="col-xs-8 col-sd-4 col-md-4 col-lg-4 text-left vcenter">
+                        <h3 style="margin-left:5px;">
+                            <i class="fa fa-info icon-circle-small" id="info_icon"></i>&nbsp;
+                        	<i class="fa fa-signal icon-circle-small" id="session_icon"></i>&nbsp;
+                            <i class="fa fa-edit icon-circle-small" id="vars_icon"></i>&nbsp;
+                        </h3>
+            </div>
+            <div class="col-xs-4 col-sd-8 col-md-8 col-lg-8 text-right">
+            			<a class="close">&times</a>   
+       <!--                 <h2 class="hidden-xs" style="margin-right:5px;">
+                            <span class="label label-primary">Elapsed time: <span id="elapsed_time_div">00:00:00</span></span> 
+                            <button type="button" id="startstopBtn" class="btn btn-success" disabled>Start</button>                     
+                        </h2>
+                        <h4 class="hidden-sm hidden-md hidden-lg" style="margin-right:5px;">
+                            <span class="label label-primary" id="elapsed_time_div">00:00:00</span><br/><br/>
+                            <button type="button" id="startstopBtn" class="btn btn-success btn-xs" disabled>Start</button>                   
+                        </h4> 
+       -->
+       					<h4 style="margin-right:5px;">
+                            <span class="label label-primary" id="elapsed_time_div">00:00:00</span><br/><br/>
+                            <button type="button" id="startstopBtn" class="btn btn-success btn-xs" disabled>Start</button>                   
+                        </h4> 
+            </div>
+        </div>
+        
+        <div class="row clearfix">
+        	<!-- buttons options -->
+            <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group btn-group-justified">
+                    <!-- Experimental data button -->
+                    <div id="div-btn-view-data" class="btn-group hide">
+                    <button id="btn-session" title="View experimental data" class="btn btn-toolbar btn-lg btn-info">
+                       <a id="btn-view-data" href="#"><i class="fa fa-archive fa-2x"></i></a>                
+                    </button>
+                    </div>
+                   <!-- Graphs button -->
+                    <div class="btn-group">
+                    <button title="Graphs defined in the experiment" id="btn-graphs" class="btn btn-toolbar btn-info" 
+                           data-toggle="modal" data-target="#modal-graphs">
+                       <!-- <span id="graphs_menu_icon_number" class="badge alert-info">0</span> -->
+                       <i id="graphs_menu_icon" class="fa fa-bar-chart-o fa-2x fa-spin"></i>
+                       <!--<strong class="caret"></strong>-->
+                    </button>   
+                    </div>
+                    
+                    <!-- Variables button -->
+                    <div class="btn-group">
+                    <button title="Variables defined in the experiment" id="btn-variables" class="btn btn-toolbar btn-info" 
+                            data-toggle="modal" data-target="#modal-variables">
+                       <!-- <span id="vars_menu_icon_number" class="badge alert-info">0</span> -->
+                       <i id="vars_menu_icon" class="fa fa-tasks fa-2x fa-spin"></i>
+                       <!-- <strong class="caret"></strong> -->
+                    </button>      
+                    </div>
+                                       
+                    <!-- Views button -->
+                    <div class="btn-group">
+                    <button title="Views used in the experiment" id="btn-views" class="btn btn-toolbar btn-info" 
+                        data-toggle="modal" data-target="#modal-views" >
+                        <i id="views_menu_icon" class="fa fa-desktop fa-2x fa-spin"></i>
+                    </button>   
+              		</div>
+                    
+                </div>   <!-- end of div for group -->                 
+            </div> <!-- End of toolbar -->
+        </div>
+        
+        <div class="row" style="margin-top:8px;">
+            <div class="col-xs-12 col-sd-12 col-md-12" id="objects_container">
+               
+            </div>
+        </div>  <!-- End of objects container -->
+        
+    </div>
+    
+    <!-- Modals dialog for lab elements !!! -->
+    <div class="modal fade" id="modal-views" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-views" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title" id="myModalLabel-views">Select a view</h4>
+          </div>
+          <div class="modal-body">
+            <div id='views_links_container'>
+            </div>
+          </div>
+          <!--<div class="modal-footer">
+            <button type="button" class="btn btn-default btn-group-xs" data-dismiss="modal">Close</button>
+          </div> -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="modal-graphs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-graphs" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title" id="myModalLabel-graphs">Select a graph</h4>
+          </div>
+          <div class="modal-body">
+            <div id='graphs_links_container'>
+            </div>
+          </div>
+          <!--<div class="modal-footer">
+            <button type="button" class="btn btn-default btn-group-xs" data-dismiss="modal">Close</button>
+          </div> -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="modal-variables" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-variables" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title" id="myModalLabel-variables">Select a module</h4>
+          </div>
+          <div class="modal-body">
+            <div id='variables_links_container'>
+            </div>
+          </div>
+          <!--<div class="modal-footer">
+            <button type="button" class="btn btn-default btn-group-xs" data-dismiss="modal">Close</button>
+          </div> -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="modal-single-variable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel-variables" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title" id="myModalLabel-variables">Change value for this variable</h4>
+          </div>
+          <div class="modal-body" id="modal-single-variable-body">
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <div class="modal fade" id="error_div" tabindex="-1" role="dialog" aria-labelledby="myModalError" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title label label-danger">Error</h4>
+          </div>
+          <div class="modal-body">
+          	<div id="error_message" class="alert alert-danger"></div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="info_div" tabindex="-1" role="dialog" aria-labelledby="myModalInfo" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title label label-info">Notification</h4>
+          </div>
+          <div class="modal-body">
+          	<div id="info_message" class="alert alert-info"></div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div class="modal fade" id="view_offline_div" tabindex="-1" role="dialog" aria-labelledby="myModalInfo_view_offline" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times fa-inverse"></i></button>
+            <h4 class="modal-title label label-info">Do you want to view data session?</h4>
+          </div>
+          <div class="modal-body">
+          	<div class="alert alert-info">
+            	<button id="btn-view-data-yes" onClick="related.showOfflineData();">Yes</button>
+                <button id="btn-view-data-yes">No</button>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
+    <!-- Info container -->
+   <div id="footerInfoSlideContainer" class="footerSlideContainer">
+        <div id="footerInfoSlideContent" class="footerSlideContent">
+            <div class="footerSlideText">
+            	<h4><i class="fa fa-info-circle"></i> General information</h4>
+                <h5>Laboratory name: <span id="lab_name_div">Lab name</span></h5>
+                <h5>Experiment name: <span id="experiment_name_div">Experiment name</span></h5>
+                <h5><span class="fa-stack fa-lg">
+                       <i class="fa fa-square fa-stack-2x"></i>
+                       <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                    </span>Connected as: <span id="username_div">Anonymous</span>
+                </h5>
+            </div>     
+        </div>
+    </div>
+     <!-- End Info container -->
+     
+     <!-- Session Status container -->
+     <div id="footerSessionSlideContainer" class="footerSlideContainer">
+        <div id="footerSessionSlideContent" class="footerSlideContent">
+            <div class="footerSlideText">
+            	<h4><i class="fa fa-signal"></i> Session status</h4>
+                <h5><i class="fa fa-calendar-o"></i> Remaining time for session: <span id="session_remaining_datetime" class="label label-success">0 minutes</span></h5>
+                <h5><i class="fa fa-calendar fa-1x"></i> Sesion start at: <span id="session_start_datetime">Lunes, 2 de diciembre de 1971; 0:00:00</span></h5>
+                <h5><i class="fa fa-calendar fa-1x"></i> Sesion stops at: <span id="session_stop_datetime">Lunes, 2 de diciembre de 1971; 0:10:00</span></h5>
+            </div>
+        </div>
+     </div>
+     <!-- End Session Slide container -->
+
+	<!-- Interactives container -->
+    <div id="footerVarsSlideContainer" class="footerSlideContainer">
+        <div id="footerVarsSlideContent" class="footerSlideContent">
+            <div class="footerSlideText">
+                <h4><small><strong>Press over the variables name to change its value:</strong></small></h4>  
+                <ul class="list-group" id="vars_list">
+                </ul>
+            </div>
+        </div>
+    </div>
+     
+<!-- JAVASCRIPT SECTION -->     
+	<!-- Loaded only if cordova/phonegap is used to build the client -->
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    
+	<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    
+    <!-- iscroll & dropdown -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/iScroll/5.1.1/iscroll-min.js"></script>
+    <script src="//cdn.rawgit.com/ungki/bootstrap.dropdown/3.3.1/dropdown.min.js"></script>
+    <script src="js/drawer/jquery.drawer.min.js"></script>
+    
+    <!-- SOAP service javascript library -->
+	<script type='text/javascript' src="js/jquery.soap.js"></script>
+	<script type="text/javascript" src="js/jquery.base64.js"></script>
+	<script type="text/javascript" src="js/jquery.xml2json.js"></script>
+    
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+    
+    <script src="js/rlab_websocket.js" type="text/javascript"></script>
+    <script src="js/rlab_library.js" type="text/javascript"></script>
+    <script src="js/rlab_editors.js" type="text/javascript"></script>
+    <script src="js/rlab_services_systems.js" type="text/javascript"></script>
+    <script src="js/rlab_services_sessions.js" type="text/javascript"></script>
+    <script src="js/rlab_services_tokens.js" type="text/javascript"></script>
+    <script src="js/utils.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    
+	<script type="text/javascript">
+
+		var openInfoSlide = false;
+		var openSessionSlide = false;
+		var openVarsSlide = false;
+        var runnedStartApp = false;
+		
+		// Wait for device API libraries to load
+		//
+		document.addEventListener("deviceready", onDeviceReady, false);
+		
+			
+		// device APIs are available
+		//
+		function onDeviceReady() {
+			// Set the ws plugin options
+			// for device 
+			if (WebSocket.pluginOptions) {
+				WebSocket.pluginOptions = {
+					// Default values override for ws plugin
+					//origin: 'http://websocket-is-fun.com',
+					// maxConnectTime: 20000,                // 20sec
+					maxTextMessageSize: 65536     // 64Kb, 32768 -->32kb
+					// maxBinaryMessageSize: 32768           // 32kb
+				}
+			}
+			if (!runnedStartApp){
+                runnedStartApp = true;
+                startApp();
+            }
+		}
+		
+		$('document').ready(function(e) {
+            if (!runnedStartApp){
+                runnedStartApp = true;
+                startApp();
+            }
+        });
+        
+        function startApp(){
+            // Register the unload event to close the session
+			window.onbeforeunload = related.onBeforeExit;
+			window.onunload = related.onExit;
+            // Configure slide buttons
+            configureFootersSlide();
+            // Start related client
+            related.init(onTokenError);
+        }
+		
+		function configureFootersSlide(){
+			$('#info_icon').click(function() {
+				// Check for the other slides
+				if (openSessionSlide){
+					$('#session_icon').click();
+				}
+				if (openVarsSlide){
+					$('#vars_icon').click();
+				}
+				if(openInfoSlide === false) {
+					$('#footerInfoSlideContent').animate({ height: '135px' });
+					$(this).css('backgroundPosition', 'bottom left');
+					openInfoSlide = true;
+				} else {
+					$('#footerInfoSlideContent').animate({ height: '0px' });
+					$(this).css('backgroundPosition', 'top left');
+					openInfoSlide = false;
+				}
+			});	
+			
+			$('#session_icon').click(function() {
+				// Check for the other slides
+				if (openInfoSlide){
+					$('#info_icon').click();
+				}
+				if (openVarsSlide){
+					$('#vars_icon').click();
+				}
+				if(openSessionSlide === false) {
+					$('#footerSessionSlideContent').animate({ height: '135px' });
+					$(this).css('backgroundPosition', 'bottom left');
+					openSessionSlide = true;
+				} else {
+					$('#footerSessionSlideContent').animate({ height: '0px' });
+					$(this).css('backgroundPosition', 'top left');
+					openSessionSlide = false;
+				}
+			});
+			
+			$('#vars_icon').click(function() {
+				// Check for the other slides
+				if (openInfoSlide){
+					$('#info_icon').click();
+				}
+				if (openSessionSlide){
+					$('#session_icon').click();
+				}
+				if(openVarsSlide === false) {
+					$('#footerVarsSlideContent').animate({ height: '100px' });
+					$(this).css('backgroundPosition', 'bottom left');
+					openVarsSlide = true;
+				} else {
+					$('#footerVarsSlideContent').animate({ height: '0px' });
+					$(this).css('backgroundPosition', 'top left');
+					openVarsSlide = false;
+				}
+			});
+		}
+		
+		function onTokenError(){
+			// No needed??
+			window.onbeforeunload = null;
+			window.onunload = null;
+			// Stop spin icons
+            $('#graphs_menu_icon').removeClass("fa-spin");
+            $('#vars_menu_icon').removeClass("fa-spin");
+            $('#views_menu_icon').removeClass("fa-spin");
+            // Disable buttons!!!
+			$('#objects_container').html("<p class='text-center'>Error: you need a valid token to get access to laboratory/experiment</p>");
+		}
+	
+	</script>
+</body>
+</html>

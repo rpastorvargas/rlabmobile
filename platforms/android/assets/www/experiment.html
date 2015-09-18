@@ -1,41 +1,205 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Test session</title>
-<link rel="stylesheet" type="text/css" href="css/experimentPanel.css">
+  <meta charset="utf-8">
+  <title>Web Experiment Client for RELATED labs</title>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web Experiment Client for RELATED labs">
+  <meta name="author" content="Rafael Pastor Vargas">
 
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="js/rlab_websocket.js"></script>
-<script src="js/rlab_library.js"></script>
-<script src="js/utils.js"></script>
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/experimentPanel.css">
 
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
 
-<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/related.png">
+     
+  	
+	<script>
+	function sendDataToExperiment(rlab_vars){
+		if (rlab_vars != null){
+			l = rlab_vars.length;
+			for (i=0; i<l; i++){
+				var returned = setVarByName(lab,rlab_vars[i],rlab_vars[i].moduleName);
+			}
+		}
+	}
+	</script>
 
-
-
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script src="js/labjs/LAB.min.js"></script>
 </head>
-
 
 <body>
 
-<script>
+<div class="container main_div">
+	<!-- Header row -->
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+            <div class="row clearfix">
+                <div class="col-md-2 column">
+                	<img src="img/related.png"/>
+				</div>
+                <div class="col-md-10 column">
+                	<h3 class="text-primary">
+                    	Lab: <span id="lab_name_div">Lab name</span><br/>
+                        Experiment: <span id="experiment_name_div">Experiment name</span>
+                		<button type="button" id="startstopBtn" onClick="startstopBtnOnclick();return false;" class="btn btn-success btn-default">Start</button>
+                    	<i id="running_icon" class="fa fa-spinner fa-spin hide"></i>
+                    </h3>
+                </div>
+			</div>            
+            <div class="row clearfix">
+				<div class="col-md-12 column">
+					<div id="time_progress_bar_style" class="progress" style="margin-top:10px">
+  						<div id="time_progress_bar" class="progress-bar active" role="progressbar" 
+                        		aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" 
+                                style="width: 100%;">
+    						<span class="sr-only">100% Complete</span>
+  						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+                	<span class="fa-stack fa-lg">
+  						<i class="fa fa-square fa-stack-2x"></i>
+  						<i class="fa fa-user fa-stack-1x fa-inverse"></i>
+					</span> 
+                	<span id="username_div">Rafael Pastor Vargas</span>
+				</div>
+                <div class="col-md-6 column" style="text-align:rigth">
+					 <span class="label label-primary fa-2x pull-right">Elapsed time: <span id="elapsed_time_div">00:00:00</span></span>
+				</div>
+			</div>
+            <div class="row clearfix">
+            	<div class="col-md-12 column" style="text-align:center">
+            		<div id="dvLoading"></div>
+                </div>
+             </div>
+            <div class="row clearfix">
+				<div class="col-md-12 column" id="error_div" style="text-align:right">
+                	
+				</div>
+			</div>     
+       </div>
+   </div>
+   <!-- End header -->
+   
+   <!-- Main row -->
+    <div class="row clearfix">
+        <div class="col-md-2 column">
+    		<nav class="navbar navbar-default" role="navigation">			
+        	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            	<ul class="nav navbar-nav">
+                	<li>
+                    	<a href="#" onclick="showContainer('session_info_content');return false;"> 
+                        	<i class="fa fa-signal"></i> Session Info</a>
+                    </li>
+                	<li class="dropdown">
+                     	<a href="#" class="dropdown-toggle" 
+                            data-toggle="dropdown">
+                            <i id="graphs_menu_icon" class="fa fa-bar-chart-o fa-spin"></i>  Graphs <br/><span id="graphs_menu_icon_number" class="badge">0</span><strong class="caret"></strong>
+                        </a>                     
+                    	<ul class="dropdown-menu" id="graphs_links_container">
+                    	</ul>
+                	</li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" 
+                                data-toggle="dropdown"><i id="vars_menu_icon" class="fa fa-tasks fa-spin"></i> Variables <br/><span id="vars_menu_icon_number" class="badge">0</span><strong class="caret"></strong></a>
+                        <ul class="dropdown-menu" id='variables_links_container'>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" 
+                                data-toggle="dropdown"><i id="views_menu_icon" class="fa fa-desktop fa-spin"></i> WebViews <br/><span id="views_menu_icon_number" class="badge">0</span><strong class="caret"></strong></a>
+                        <ul class="dropdown-menu" id='views_links_container'>
+                        </ul>
+                    </li>
+            	</ul>
+        	</div>
+			</nav>
+		</div>
+		<div class="col-md-10 column" id="objects_container">
+        	<div class="row clearfix" id="session_info_content">
+				<div class="col-md-12 column">
+                	<div class="panel panel-primary">
+                		<div class="panel-heading">
+                    		<h3 class="panel-title">
+                                <i class="fa fa-signal"></i> Session status
+                            </h3>
+                        </div> 
+                        <div class="panel-body">
+                            <i class="fa fa-calendar-o fa-2x"></i> Remaining time for session: <span id="session_remaining_datetime" class="label label-success">0 minutes</span>
+                        </div>
+					</div>
+                </div>
+                <div class="col-md-12 column">
+                	<div class="panel panel-primary">
+                		<div class="panel-heading">
+                    		<h3 class="panel-title">
+                                <i class="fa fa-signal"></i> Session info
+                            </h3>
+                        </div> 
+                        <div class="panel-body">
+                            <i class="fa fa-calendar fa-1x"></i> Sesion start at: <span id="session_start_datetime">Lunes, 2 de diciembre de 1971; 0:00:00</span>
+                        	<br/>
+                        	<i class="fa fa-calendar fa-1x"></i> Sesion stops at: <span id="session_stop_datetime">Lunes, 2 de diciembre de 1971; 0:10:00</span>
+                        </div>
+					</div>
+                </div>
+			</div>    
+		</div>
+        <!-- End of objects container -->
+	</div>
+</div>
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+    
+    <!-- SOAP service javascript library -->
+	<script type='text/javascript' src='js/jquery.soap.js'></script>
+	<script type="text/javascript" src='js/jquery.base64.js'></script>
+	<script type="text/javascript" src='js/jquery.xml2json.js'></script>
+    
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+    
+    <script src="js/rlab_websocket.js" type="text/javascript"></script>
+    <script src="js/rlab_library.js" type="text/javascript"></script>
+    <script src="js/rlab_editors.js" type="text/javascript"></script>
+    <script src="js/rlab_services_systems.js" type="text/javascript"></script>
+    <script src="js/rlab_services_sessions.js" type="text/javascript"></script>
+    <script src="js/utils.js" type="text/javascript"></script>
+    <!-- <script src="../js/labjs/LAB.min.js" type="text/javascript"></script> -->
+    
+    
+<script type="text/javascript">
 
     // http://10.211.80.177:9997/64B8D07F77B8536704A19B082F59B53C
 	// http://10.211.80.177:9002/64B8D07F77B8536704A19B082F59B53C/
 	var host = "192.168.2.101"; //"62.204.199.218";
-	var port = 9002; //9001;		
-	var id = "AF16D21AA9F380B701F58505BA6AA51E"; //"32D05B1F3681B5C8424001467B8649CD";
+	var port = 9999; //9001;		
+	var id = "55B25E0EF789AB7FB0835B570670F636"; //"32D05B1F3681B5C8424001467B8649CD";
 	var username = "debug";
-	var experiment = "Open loop model for a Tank (NoView)"; //"Ball position";
-	var slot_time = 10;
+	var experiment_id = "DPFUHGFUNBPTKNVPUOJKZG=="; //"Ball position";
+	var experiment_name = "Simple experiment";
+	var experiment_time = 0;
+	var slot_time = 20;
 	
 	// Defines if the experiment is running
 	var running = false;
@@ -44,17 +208,20 @@
 	var lab = null; // new Lab(host,port,id);
 	// Test if REST service if alive !!!
 	var lab_name = null; // getLabName(lab);
-	// Experiment vars
+	// Experiment vars and params
 	var experiment_vars = null;
+	var experiment_params = null;
 	// Local  modules
 	var local_modules = null;
 	// Remote modules
 	var remote_modules = null;
 	var remote_systems = null;
+	
 	// Web views
-	// Url indicating the view
+	// Urls array indicating the view
 	var web_views = null;
 	var onReceiveDataViewHandlers = [];
+	var views_iframes = [];
 	
 	
 	// graphs
@@ -73,127 +240,208 @@
 	// Wait for openned connection
 	$("#startstopBtn").attr("disabled", "disabled");
 	
+	var sessions_openned = null;
 	
+	// Used for left options to cange to div
+	var showingContainer = 'session_info_content';
 	// Register the unload event to close the session
 	//$(window).unload(onExit);
 	window.onbeforeunload = onExit;
+	
+	// Session timer
+	var session_start_time;
+	var session_stop_time;
+	var timerSessionId;
+	var timerSessionInterval = 1000;
 		
 	function onExit(){
-		//alert("Saliendo..");
 		rlab_closeSession(session);
 	}
 	
-	$(window).load(function(){
-  		$('#dvLoading').fadeOut(500);
-	});
-	
 	$(document).ready(function() {
 		
-		
+		$('#dvLoading').removeClass('hide');
 			
 		// Read expected parameters
-		host = getParameter("lab_ip");
-		port = getParameter("lab_port");		
-		id = getParameter("lab_id"); 
-		username = getParameter("lab_username");
-		experimentURIComponent = getParameter("lab_experiment"); 
-		// Decode !!!
-		experiment = decodeURIComponent(experimentURIComponent);
-		slot_time = getParameter("lab_slot_time");
+		// host = getParameter("lab_ip");
 		
-		// Objects for control lab
-		lab = new Lab(host,port,id);
+		id = getParameter("lab_id");
 		
-		// Test if REST service if alive !!!
-		lab_name = getLabName(lab);
-		
-		if (typeof lab_name === "undefined"){
-			lab_name = null;
-		}
-	
-		// And check for experiment name !!!
-		var experiments_names = getExperimentsNames(lab);
-		var experimentOk = false;
-		if (experiments_names != null){
-			for (var j=0; j<experiments_names.length; j++) {
-				if (experiments_names[j] == decodeURIComponent(experiment)){
+		// port And Id is got from Lab data
+		// port = getParameter("lab_port");		
+		var lab_info = getSystemInfo(id);
+		if (lab_info!=null){
+			port = lab_info.rest_port;
+			host = lab_info.IP;
+			
+			username = getParameter("lab_username");
+			experimentURIComponent = getParameter("experiment_id"); 
+			// Decode !!!
+			experiment_id = decodeURIComponent(experimentURIComponent);
+			slot_time = getParameter("lab_slot_time");
+			
+			// Objects for control lab
+			lab = new Lab(host,port,id);
+			
+			// Test if REST service if alive !!!
+			lab_name = getLabName(lab);
+			var experimentOk = false;
+			if (typeof lab_name === "undefined"){
+				lab_name = null;
+			} else {
+				// And check for experiment id !!!
+				var experiment_info = getExperimentInfo(lab.id,experiment_id);
+				if (experiment_info != null){
+					experiment_name = experiment_info.experiment_name;
+					// Get experiment time
+					experiment_time = getExperimentTime(lab,experiment_name);
 					experimentOk = true;
-					break;
+					
 				}
-    		}
-
+			}
+			// Check is being used !!!
+			sessions_openned = getOpenSessionsForSystem(id);
 		}
-		if (lab_name != null & experimentOk){
+		 
+		
+				
+		if ((lab_name != null) & (experimentOk) & (sessions_openned==null)){
 			
 			// Store vars
-			experiment_vars = getVarsFromExperiment(lab,experiment);
+			experiment_vars = getVarsFromExperiment(lab,experiment_name);
+			// Store params
+			experiment_params = getParams(lab);
 			// Store local modules names
-			local_modules = getLocalModulesNames(lab,experiment);
+			local_modules = getLocalModulesNames(lab,experiment_name);
 			// Store remote modules names and system (REST service!!!)
-			remote_modules = getRemoteModulesNames(lab,experiment);
-			remote_systems = getRemoteModulesSystemsNames(lab,experiment);
+			remote_modules = getRemoteModulesNames(lab,experiment_name);
+			remote_systems = getRemoteModulesSystemsNames(lab,experiment_name);
+			
+			// Fill the information about experiment
+			buildGeneralInformationUI();
+			
+			buildMainContent(slot_time);
 			
 			// Build charts interface
-			createCharts();
+			createCharts(lab,experiment_name);
 			
 			// Build interactives interface
-			buildInteractives();
+			buildInteractives(lab,experiment_name,local_modules,remote_modules,remote_systems);
 			
 			// Build views
-			urls = getWebViewsUrlsFromExperiment(lab,experiment);
+			urls = getWebViewsUrlsFromExperiment(lab,experiment_name);
+			
 			if (urls!=null && $.isArray(urls)){
 				web_views = urls;
-				var web_views_names = getWebViewsFromExperiment(lab,experiment);
-				var web_views_descriptions = getWebViewsDescriptionsFromExperiment(lab,experiment);
+				var web_views_names = getWebViewsFromExperiment(lab,experiment_name);
+				var web_views_descriptions = getWebViewsDescriptionsFromExperiment(lab,experiment_name);
 				buildViews(web_views, web_views_names, web_views_descriptions);
 			}
 			
 			// Get the session and start a session
-			var session = getSession(host,port,username,experiment,slot_time,
+			var session = getSession(host,port,username,experiment_name,slot_time,
 							  onDataReceived,onOpenCallback,
 							  onCloseCallback,onErrorCallback);
 			
-			// Create var dialog
-			$( "#var-dialog-modal" ).dialog({
-      			height: 200,
-      			modal: true,
-				autoOpen: false
-    		});
-			
-			$("#experiment_container").show();
+			// Start timer function for session
+			timerSessionId = setInterval(sessionTimerControl, timerSessionInterval);
+
 		} else {
-			$("#error_container").show();
-		}
-        
-		$("#preload").hide(); //Hide our preloader
+			buildMainContent(0);
+			if (sessions_openned!=null){
+				$("#error_div").html("The lab is being used now.<br/><br/>Try later...");
+			} else {
+				$("#error_div").html("Wrong lab connection parameters !!!.");
+			}
+		} 
+        // Remove class loading
+		$('#dvLoading').addClass('hide');
+		$("#graphs_menu_icon").removeClass('fa-spin');
+		$("#vars_menu_icon").removeClass('fa-spin');
+		$("#views_menu_icon").removeClass('fa-spin');
+		
     });
  
- 	function buildViews(web_views_url,web_views_names,web_views_descriptions){
+ 	function buildGeneralInformationUI(){
+		$('#lab_name_div').html( lab_name );
+		$('#experiment_name_div').html( experiment_name );
+		$('#username_div').html( username );
+		// Configure progressbar
+		/*if (experiment_time != 0){
+			// Time in seconds
+			$('#time_progress_bar').attr('aria-valuemax',experiment_time);
+		} else {
+			// Use a default minute bar
+			$('#time_progress_bar').attr('aria-valuemax',60);
+		}*/
+ 	}
+ 	
+	function buildViews(web_views_url,web_views_names,web_views_descriptions){
+		var entries_number = 0;
  		if (web_views_url!=null){
 			var l = web_views_url.length;
 			for (i=0; i<l; i++){
 				var container_name = "View-"+i;
 				var ul_ref = $("#views_links_container");
-				ul_ref.append("<li><a href='#" + container_name + "'>" + 
-								web_views_names[i] + "</a></li>");
-				// Create div including the view
-				var html_element = '<div class="webview_description_css"><p>' + web_views_descriptions[i] + "</p>";
-				html_element += '<div id="' + container_name + '" class="view_style"></div>';
-				html_element += '</div>';
-				$('#views_container').append(html_element);
+				var li_ref = "<li><a href='#' onclick=\"showContainer('panel-" + container_name + "'); return false;\"> <i class='fa fa-share'></i> " + 
+								web_views_names[i] + "</a></li>";
+				ul_ref.append(li_ref);
+				// Add a divider to the links
+				if (i<l-1){
+					divider = "<li class='divider'></li>";
+				}
+				
+				var html_element = '<div class="row clearfix"><div class="col-md-12 column">';
+				html_element += '<div id="panel-' + container_name + '" class="panel panel-primary hide">';
+				html_element += '<div class="panel-heading"><h3 class="panel-title">';
+				html_element += '<i class="fa fa-desktop"></i> ' + web_views_descriptions[i];
+				html_element += '</h3></div>';
+				html_element += '<div class="panel-body">';
+                html_element += '<div class="iframe_general_style" id="iframe-' + container_name + '"></div>';
+                html_element += '</div>'; // End of panel body
+				html_element += '</div>'; // End of panel-primary
+				html_element += '</div></div>'; // End or row
+            	
+				$('#objects_container').append(html_element);
+				
+				
 				// Load html from view
-				$( "#"+container_name ).load( web_views_url[i], function() {
+				/*$( "#"+container_name ).load( web_views_url[i], function() {
 					$( "#"+container_name).trigger('create');
-				});
+				});*/
+				$( "#iframe-"+container_name ).html('<iframe width="100%" height="100%" src="' + 
+					web_views_url[i] + '" id="' + (container_name+"_iframe") + 
+					'" onload="configureFrame(this.id)" seamless sandbox="allow-same-origin allow-scripts allow-top-navigation"></iframe>');
 			}
-			// Build the tabs
-			$('#views_container').tabs();
-		} else {
-			$('#views_container').html("No views !!!");
-		}
+			entries_number = l;
+		} 
+		$("#views_menu_icon").removeClass('fa-spin');
+		$("#views_menu_icon_number").html(entries_number);
 	}
+	
  	
-	function createCharts(){
+	function configureFrame(id) {
+		var ifrm = document.getElementById(id);
+		var doc = ifrm.contentDocument? ifrm.contentDocument: 
+			ifrm.contentWindow.document;
+		ifrm.style.visibility = 'hidden';
+		ifrm.style.height = "10px"; // reset to minimal height ...
+		// IE opt. for bing/msn needs a bit added or scrollbar appears
+		ifrm.style.height = getDocHeight( doc ) + 15 + "px";
+		ifrm.style.visibility = 'visible';
+		// add to array of views iframes
+		views_iframes.push(ifrm);
+	}
+
+	function getDocHeight(doc) {
+		doc = doc || document;
+		var body = doc.body, html = doc.documentElement;
+		var height = Math.max( body.scrollHeight, body.offsetHeight, 
+			html.clientHeight, html.scrollHeight, html.offsetHeight );
+		return height;
+	}
+
+	function createCharts(lab,experiment){
 		// Configure chart
 		// returns an array with items having the next structure
 		// module --> module name
@@ -204,49 +452,65 @@
 		if (typeof graphs_info === "undefined"){
 			graphs_info = null;
 		}
-		if (graphs_info == null){
-			$('#graphs_container').html("No graphs !!!");
-		} else {
+		if (graphs_info != null){
 			for (var i = 0; i<graphs_info.length; i++){
 				var container_name = "chart" + i;
-				// Add the link in tab
+				// Add the link in nav tab
 				var ul_ref = $("#graphs_links_container");
 				var tab_title = createGraphTitle((graphs_info[i])['names']);
-				ul_ref.append("<li><a href='#" + container_name + "'>" + 
-								tab_title + "</a></li>");
-				// Create chart in the document !!!	
-				var html_element = '<div id="' + container_name + '" class="graph_style"></div>';
-				$('#graphs_container').append(html_element);
-				//$(document).add(html_element);
-				// Render !!!
+				var li_ref = "<li><a href='#' onclick=\"showContainer('panel-" + container_name + "'); return false;\"> <i class='fa fa-share'></i> " + 
+								tab_title + "</a></li>";
+				ul_ref.append(li_ref);
+				// Add a divider to the links
+				if (i<graphs_info.length-1){
+					divider = "<li class='divider'></li>";
+				}
+				
+				// Create chart in the document as a row inside objects_container!!!						
+				var html_element = '<div class="row clearfix"><div class="col-md-12 column">';
+				html_element += '<div id="panel-' + container_name + '" class="panel panel-primary hide">';
+				html_element += '<div class="panel-heading"><h3 class="panel-title">';
+				html_element += '<i class="fa fa-bar-chart-o"></i> ' + tab_title;
+				html_element += '</h3></div>';
+				html_element += '<div class="panel-body">';
+				html_element += '<div class="graph_style">'; // Wrapper style for graph
+                html_element += '<div id="' + container_name + '" ></div>';
+				html_element += '</div>'; // End of wrapper
+                html_element += '</div>'; // End of panel body
+				html_element += '</div>'; // End of panel-primary
+				html_element += '</div></div>'; // End or row
+            	
+				$('#objects_container').append(html_element);
+				
+				// Add chart
 				chart = createChart(container_name,graphs_info[i],smooth_lines);
 				chart_info = new Array();
 				chart_info['chart'] = chart;
 				chart_info['names'] = (graphs_info[i])['names'];
 				chart_info['module'] = (graphs_info[i])['module'];
 				chart_info['system'] = (graphs_info[i])['system'];
+				chart_info['container'] = "panel-" + container_name;
 				charts.push(chart_info);
+				
 			}
-			// Build the tabs
-			$('#graphs_container').tabs();
-			// Bind the select event to store the last graph selected !!!
-			$("#graphs_container").on("tabsactivate", function(e, ui) {
-				graph_tab_index = ui.newTab.index();
-			});
+			$("#graphs_menu_icon").removeClass('fa-spin');
+			$("#graphs_menu_icon_number").html(graphs_info.length);
 		} 
 	}
 	
-	function buildInteractives(){
+	function buildInteractives(lab,experiment_name,local_modules,remote_modules,remote_systems){
 		var localInteractives = false;
 		var remoteInteractives = false;
+		var entries_number = 0;
 		if (local_modules !=null){
 			for (i=0; i<local_modules.length; i++){
 				var module_name = local_modules[i];
 				var interactive_variables_module = 
-						getLocalInteractiveVariables(lab,experiment,module_name);
+						getLocalInteractiveVariables(lab,experiment_name,module_name);
 				if (interactive_variables_module !=null){
-					createInteractiveVarsDiv(module_name,interactive_variables_module);
+					createInteractiveVarsDiv(module_name,interactive_variables_module,false,null);
 					localInteractives = true;
+					entries_number ++;
 				}
 			}
 		}
@@ -256,37 +520,101 @@
 				var module_name = remote_modules[i];
 				var system_name = remote_systems[i];
 				var interactive_variables_module = 
-					getRemoteInteractiveVariables(lab,experiment,module_name,system_name);
+					getRemoteInteractiveVariables(lab,experiment_name,module_name,system_name);
 				if (interactive_variables_module !=null){
-					createInteractiveVarsDiv(module_name,interactive_variables_module);
+					createInteractiveVarsDiv(module_name,interactive_variables_module,true,system_name);
 					remoteInteractives = true;
+					entries_number ++;
 				}
 			}
 		}
-		
-		if (localInteractives || renmoteInteractives){
-			// Finaly build the tabs
-			$( "#interactives_container").tabs();
-		} else {
-			$( "#interactives_container").html("No interactives variables defined for experiment");
-		}
+		$("#vars_menu_icon").removeClass('fa-spin');
+		$("#vars_menu_icon_number").html(entries_number);
 	}
 	
- 	function startExp(lab,experiment){
+	function createInteractiveVarsDiv(module_name,interactive_variables_module,remote,system_name){
+		// Define inner container name 
+		var container_name = "interactives-" + module_name;
+		
+		// Create li entry
+		// Replace all blank spaces with -
+		container_name = container_name.replace(/ /g, "-");
+		// container_name = container_name.split(' ').join('-');
+		var ul_ref = $("#variables_links_container");
+		var li_ref = "<li><a href='#' onclick=\"showContainer('panel-" + container_name + "'); return false;\"> <i class='fa fa-share'></i> " + 
+								module_name + "</a></li>";
+		ul_ref.append(li_ref);
+		
+		// Create chart in the document as a row inside objects_container!!!						
+		var html_element = '<div class="row clearfix"><div class="col-md-12 column">';
+		html_element += '<div id="panel-' + container_name + '" class="panel panel-primary hide">';
+		html_element += '<div class="panel-heading"><h3 class="panel-title">';
+		html_element += '<i class="fa fa-tasks"></i> Variables for module: ' + module_name;
+		if (remote){
+			html_element += " (Remote)";
+		}
+		html_element += '</h3></div>';
+		html_element += '<div class="panel-body">';
+		html_element += '<div id="' + container_name + '"></div>';
+		html_element += '</div>'; // End of panel body
+		html_element += '</div>'; // End of panel-primary
+		html_element += '</div></div>'; // End or row
+            	
+		$('#objects_container').append(html_element);				
+		
+		// Fill the div with interactive vars
+		if (interactive_variables_module != null){
+			var div_tab = $("#"+container_name);
+			for (i=0; i<interactive_variables_module.length; i++){
+				var variable_name = interactive_variables_module[i];
+				if (!remote){
+					myVar = getVarByName(lab,variable_name,module_name);
+				} else {
+					myVar = getRemoteVarByName(variable_name,module_name,system_name);
+				}
+				html_element = createEditor(myVar,interactives_vars_containers)
+				div_tab.append(html_element);
+			}
+		}
+		
+	}
+	
+	function buildMainContent(work_session_time){
+		// In minutes
+		session_start_time = new Date();
+		$('#session_start_datetime').html(session_start_time.toLocaleString());
+		// Add session time to now
+		session_stop_time = new Date();
+		minutes = session_start_time.getMinutes() + work_session_time;
+		session_stop_time.setTime(session_start_time.getTime() + 60000*work_session_time);
+		$('#session_stop_datetime').html(session_stop_time.toLocaleString());
+		// Remaining time
+		$('#session_remaining_datetime').html(work_session_time + " minutes");
+	}
+	/*****************************************************************************************************
+	
+	CONTROL EXPERIMENT
+	
+	******************************************************************************************************/ 
+ 	function startExp(lab,experiment,username){
 		
 		var ok = initExperiment(lab, experiment);
 		if (ok==true){
+			setUserNameRunningExperiment(lab,experiment,username);
 			ok = startExperiment(lab,experiment);
 			if(ok==true){
 				resetChartsData();
-				$("#startstopBtn").text("Stop experiment");
+				invokeStartEventOnWebViews();
+				$("#startstopBtn").text("Stop");
 				running = true;
-				//chart.redraw();
+				$("#startstopBtn").removeClass('btn-success');
+				$("#startstopBtn").addClass('btn-danger');
+				$("#running_icon").removeClass('hide');
 			} else {
-				$("#messages").text("Error starting experiment!!!");
+				$("#error_div").text("Error starting experiment!!!");
 			}
 		} else {
-			$("#messages").text("Error initiating experiment!!!");
+			$("#error_div").text("Error initiating experiment!!!");
 		}
 		
 	}
@@ -294,11 +622,14 @@
 	function stopExp(lab,experiment){
 		var ok = stopExperiment(lab, experiment);
 		if (ok==true){
-			$("#startstopBtn").text("Start experiment");
+			invokeStopEventOnWebViews();
+			$("#startstopBtn").text("Start");
 			running = false;
-			
+			$("#startstopBtn").removeClass('btn-danger');
+			$("#startstopBtn").addClass('btn-success');
+			$("#running_icon").addClass('hide');
 		} else {
-			$("#messages").text("Error stopping experiment!!!");
+			$("#error_div").text("Error stopping experiment!!!");
 		}
 		
 	}
@@ -306,23 +637,25 @@
 	function startstopBtnOnclick(event){
 		// Depending on state, do start of stop function
 		if (running==true){
-			$('#dvLoading').show();
-			$('#dvLoading').fadeOut(500);
-			stopExp(lab,experiment);
-			$("#preload").hide();
-			$('#img_running').attr('src','images/refresh.png');
-			$('#initial_msg').html("Press the Start experiment button...");
+			$('#dvLoading').removeClass('hide');
+			stopExp(lab,experiment_name);
+			$('#time_progress_bar_style').removeClass('progress-striped');
+			$('#dvLoading').addClass('hide');
 		} else {
-			$('#dvLoading').show();
-			$('#dvLoading').fadeOut(500);
-			startExp(lab,experiment);
+			$('#dvLoading').removeClass('hide');
+			startExp(lab,experiment_name,username);
 			$("#preload").hide();
-			// Change image
-			$('#img_running').attr('src','images/running.gif');
-			$('#initial_msg').html("Experiment '" + experiment + "' is running now.");
+			// Change progress bar to stripped
+			$('#time_progress_bar_style').addClass('progress-striped');
+			$('#dvLoading').addClass('hide');
 		}
 	}
 	
+	/***********************************************************************************************************
+	
+		CALLBACKS FOR WEBSOCKET USING IN SESSION
+	
+	************************************************************************************************************/ 
 	// Callback function used to get data received!!!
 	function onDataReceived(data){
 		//$("#data").html(data);
@@ -332,7 +665,13 @@
 			var time = dataOnExp.sealed_time;
 			time = time/1000;
 			formattedTime = formatSecondsAsTime(time,null);
-			$("#experiment_time").html("<strong>" + formattedTime + "</strong>");
+			$("#elapsed_time_div").html("<strong>" + formattedTime + "</strong>");
+			if (experiment_time != 0){
+				$('#time_progress_bar').width((time/experiment_time)*100 + "%");
+			} else {
+				ntime = time%60;
+				$('#time_progress_bar').width((ntime/60)*100 + "%");
+			}
 			// Add to graph
 			// Get the array of vars
 			var variables = dataOnExp.vars;
@@ -344,7 +683,6 @@
 					var index = $.inArray(var_name, names);
 					if (index>=0){
 						var chart_to_add = (charts[j])['chart'];
-						// console.log("Addind var: " + var_name + " to " + $(chart_to_add.renderTo).attr("id"));
 						updateData(chart_to_add,var_name, single_var.value, time);
 					}
 				}
@@ -352,42 +690,48 @@
 				var id_to_find = "#interactive-var-" + single_var.name;
 				for (j=0; j<interactives_vars_containers.length; j++){
 					if (interactives_vars_containers[j] == id_to_find){
-						$(id_to_find).html(single_var.name + ": " + single_var.value);
+						// $(id_to_find).html(single_var.name + ": " + single_var.value);
+						updateEditorValue(interactives_vars_containers[j],single_var);
 						break;
 					}
 				}
 			}
 			try {
-			// Redraw charts, only if page of graphs is showing !!!
-				var activePage = $.mobile.activePage.attr("id");
-				if (activePage == "graphs_page"){
-					for (j=0; j<charts.length; j++){
-						// Only redraw the visible
-						if (graph_tab_index == j){
-							var chart_to_redraw = (charts[j])['chart'];
-							chart_to_redraw.redraw();
-						}
+				// Redraw charts, only if page of graphs is showing !!!
+				for (j=0; j<charts.length; j++){
+					// Only redraw the visible
+					if (showingContainer == (charts[j])['container']){
+						var chart_to_redraw = (charts[j])['chart'];
+						chart_to_redraw.redraw();
 					}
 				}
 			} catch(err){
 				console.error(err.message);
 			}
 
-			// Upddate interactive panels !!!
+			// Update interactive panels
 			
 			// Views
 			if (variables.length>0){
 				// Call t
-				var l = onReceiveDataViewHandlers.length;
+				//var l = onReceiveDataViewHandlers.length;
+				var l = views_iframes.length;
 				for(j=0; j<l;j++){
 					try
 					{
-						onReceiveDataViewHandlers[j](variables);
+						views_iframes[j].contentWindow.onRLABReceiveData(variables);
 					}
 					catch (error)
 					{
-						console.log("Error in Function " + onReceiveDataViewHandlers[j] + ": " + error);
+						console.log("Error in Function " + 
+							views_iframes[j].contentWindow.onRLABReceiveData + ": " + error);
 					}
+				}
+			}
+			// Check for final of experiment time
+			if (experiment_time>0){
+				if (time>=experiment_time){
+					startstopBtnOnclick(null);
 				}
 			}
 		}
@@ -407,11 +751,61 @@
 	}
 	
 	function onCloseCallback(data){
-		$("#messages").html("Closing session: " + data);
+		$("#messages").html("Closed connection by lab: " + data.reason);	
+		closeExperimentWindow(data.reason);	
 	}
 	
 	function onErrorCallback(error){
 		$("#messages").html("Error with websockets: " + error);
+	}
+	
+	/*
+	*********************************************************************************
+	
+		EVENT FUNCTIONS FOR WEB VIEWS
+	*********************************************************************************
+	*/
+	function invokeStartEventOnWebViews(){
+		var l = views_iframes.length;
+		for(j=0; j<l;j++){
+			try
+			{
+				views_iframes[j].contentWindow.onRLABStartExperiment(experiment_vars,experiment_params);
+			}
+			catch (error)
+			{
+				console.log("Error calling start experiment event --> Function " + 
+				views_iframes[j].contentWindow.onRLABStartExperiment + ": " + error);
+			}
+		}
+	}
+
+	function invokeStopEventOnWebViews(){
+		var l = views_iframes.length;
+		for(j=0; j<l;j++){
+			try
+			{
+				views_iframes[j].contentWindow.onRLABStopExperiment(experiment_vars,experiment_params);
+			}
+			catch (error)
+			{
+				console.log("Error calling stop experiment event --> Function " + 
+				views_iframes[j].contentWindow.onRLABStopExperiment + ": " + error);
+			}
+		}
+	}
+
+	/*
+	*********************************************************************************
+	
+		UTILS
+	*********************************************************************************
+	*/
+	
+	function closeExperimentWindow(reason){
+		alert("Closed connection by lab: " + reason + ".\nNow the experiment window will be closed!!!");
+		// For web interface. REVISE FOR MOBILE !!!!
+		self.close();
 	}
 	
 	function formatSecondsAsTime(secs, format) {
@@ -467,12 +861,13 @@
             chart: {
 				type: type_graph,
 				renderTo: container_name,
-                marginRight: 10,
+                //marginRight: 10,
             },
+			reflow: false,
             title: { text: title_graph },
             xAxis: { title: { text: 'Time'}, type: 'linear' },
             yAxis: {  title: { text: 'Values' } }, //, plotLines: createPlotLines(names,colors) },
-            exporting: {enabled: false}
+            exporting: {enabled: true}
         });
 		createSeries(chart, graph_info['names'], graph_info['colors']);
 		return chart;
@@ -527,42 +922,11 @@
 	
 	}
 	
-	function createInteractiveVarsDiv(module_name,interactive_variables_module){
-		// TO DO
-		var container = $("#interactives_container");
-		// Add the tab 
-		var div_id = "tabs-" + module_name;
-		var ul_refs = $("#tabs_links_container");
-		ul_refs.append("<li><a href='#" + div_id + "'>" + module_name + "</a></li>");
-		// and the div
-		container.append("<div id=" + div_id + ">");
-		// Fill the div with interactive vars
-		if (interactive_variables_module != null){
-			var div_tab = $("#"+div_id);
-			for (i=0; i<interactive_variables_module.length; i++){
-				var variable_name = interactive_variables_module[i];
-				myVar = getVarByName(lab,variable_name,module_name);
-				var onclickproperty='onclick="changeVariableDialog(';
-				onclickproperty += "'" + myVar.name + "');return false;";
-				onclickproperty += '"';
-				var p_id = "interactive-var-" + myVar.name;
-				// Add to array, in order to get the 
-				interactives_vars_containers.push("#" + p_id);
-				var html_element = "<div> <p id='" + p_id + "'>" + myVar.name + ": " + myVar.value + 
-							"</p><button " + onclickproperty + ">Modify</button>" + 
-							"</div>";
-				div_tab.append(html_element);
-				$(document).add(html_element);
-			}
-		}
-		
-	}
-	
 	function changeVariableDialog(var_name){
 		// Modify html structure of dialog
 		// modifyDialog("#var-dialog-modal",var_name);
 		// $( "#var-dialog-modal" ).dialog( "open" );
-		$.mobile.changePage( "enter_lab_data.hmtl" );
+		jqmobile_object.changePage( "enter_lab_data.hmtl" );
 	}
 	
 	function modifyDialog(container,var_name){
@@ -589,125 +953,82 @@
 		return modified;
 	}
 	
-	function changeVarValue(text_value_container,var_name){
-		if (experiment_vars!=null){
-		    the_var = objectFindByKey(experiment_vars,'name',var_name);
-			if (the_var!=null){
-				new_value = $(text_value_container).val();
-				the_var.value = parseFloat(new_value);
-				var returned = setVarByName(lab,the_var,the_var.moduleName);
-				//var returned = setVarByName(lab,the_var);
-				// Close the dialog !!!
-				$("#var-dialog-modal").dialog("close");
-				// Get new value !!!
-				var new_var = getVarByName(lab,var_name,the_var.moduleName);
-				var p_id = "#interactive-var-" + myVar.name;
-				$(p_id).html(new_var.name + ": " + new_var.value);
-			}
+	function showContainer(id){
+		// Hide the actual
+		$('#' + showingContainer ).addClass('hide');
+		
+		showingContainer = id;
+		// Show new
+		$('#' + id ).removeClass('hide');
+		// Check for container type !!! to refresh
+		if (showingContainer.indexOf('chart')>=0){
+			// Redraw the chart, the index is the last character
+			index = parseInt(showingContainer.substring(showingContainer.length-1,showingContainer.length));
+			
+			container_width = $('#'+id).width();
+			container_height = $('#'+id).height();
+			
+			(charts[index])['chart'].setSize(container_width-40,container_height, true);
+			// ((charts[index])['chart']).redraw();
+		} else if (showingContainer.indexOf('View')>=0){
+			// Change size of iframe !!!
+			index = showingContainer.indexOf("-");
+			var view_name = showingContainer.substr(index+1);
+			// Get the height of iframe doc 
+			var ifrm = document.getElementById(view_name + "_iframe");
+			var doc = ifrm.contentDocument? ifrm.contentDocument:ifrm.contentWindow.document;
+			doc = doc || document;
+			var body = doc.body, html = doc.documentElement;
+			var height = Math.max( body.scrollHeight, body.offsetHeight, 
+							html.clientHeight, html.scrollHeight, html.offsetHeight );
+			// Set the container height
+			$('#' + view_name + "_iframe").height(height);
 		}
 	}
 	
-	function objectFindByKey(array, key, value) {
-    	for (var i = 0; i < array.length; i++) {
-        	if (array[i][key] === value) {
-            	return array[i];
-        	}
-    	}
-    	return null;
+	function sessionTimerControl(){
+		// Session timer
+		var now = new Date();
+		// remaining time
+		t1 = now.getTime();
+		t2 =  session_stop_time.getTime();
+		ms_remaining = t2-t1;
+		if (ms_remaining>0){
+			//  Update session_remaining_time
+			if (ms_remaining<60000){
+				if ($('#session_remaining_datetime').hasClass('label-success')){
+					$('#session_remaining_datetime').removeClass('label-success');
+					$('#session_remaining_datetime').addClass('label-warning');
+				}
+				seconds = parseInt(ms_remaining/1000);
+				$('#session_remaining_datetime').html(seconds + " seconds");
+			} else{
+				minutes = parseInt(ms_remaining/60000);
+				seconds = parseInt( (ms_remaining - minutes*60000)/1000);
+				$('#session_remaining_datetime').html(minutes + " minutes, " + seconds + " seconds");
+			}
+		} else {
+			// Session ended
+			$('#session_remaining_datetime').removeClass('label-warning');
+			$('#session_remaining_datetime').addClass('label-danger');
+			$('#session_remaining_datetime').html("Finished");
+			// Finally stop the session timer
+			clearInterval(timerSessionId);
+			// Stop the actual experiment
+			if (running==true){
+				startstopBtnOnclick(null);
+			}
+			// Disable startStopButton
+			$('#startstopBtn').removeClass('btn-success');
+			$('#startstopBtn').addClass('btn-error');
+			$('#startstopBtn').html('Session end');
+			$('#startstopBtn').attr('disabled','disabled');
+			// End session
+			rlab_closeSession(session);
+		}
 	}
-
 	
 </script>
-
-<!-- Home -->
-<div data-role="page" id="home">
-    <div data-role="content" class="main_container">
-        <div id="experiment_data">
-    		<button id="startstopBtn" disabled="true" onClick="startstopBtnOnclick();return false;">Start Experiment</button>
-    		<div id="experiment_time"></div>
-		</div>
-        
-        <div data-role="navbar" data-iconpos="top">
-            <ul>
-                <li>
-                    <a href="#graphs_page" data-transition="slidefade" data-theme="" data-icon="gear"
-                    class="ui-btn-active ui-state-persist">
-                        Graphs
-                    </a>
-                </li>
-                <li>
-                    <a href="#interactives_page" data-transition="fade" data-theme="" data-icon="edit"
-                    class="ui-btn-active ui-state-persist">
-                        Vars
-                    </a>
-                </li>
-                <li>
-                    <a href="#views_page" data-transition="fade" data-theme="" data-icon="plus"
-                    class="ui-btn-active ui-state-persist">
-                        Views
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div id="initial_content" data-role="content">
-        	<p><img id="img_running" src="images/refresh.png"/></p>
-        	<p id="initial_msg">Press the Start experiment button...</p>
-        </div>
-        <div id="messages" data-role="footer"></div>
-    </div>
-    
-    <div id="dvLoading"></div>
-</div>
-
-
-<!--
-<div id="experiment_container" style="display:none" class="main_container">
--->
-
-<div data-role="page" id="graphs_page">
-	<div data-role="header">
-		<h1>Graphs</h1>
-	</div><!-- /header -->
-	<div id="graphs_container" data-role="content">
-    	<ul id="graphs_links_container"></ul>
-    </div>
-</div>
-	
-<div data-role="page" id="interactives_page">
-	<div data-role="header">
-		<h1>Interactive variables</h1>
-	</div><!-- /header -->
-	<div id="interactives_container" data-role="content">
-    	<ul id="tabs_links_container"></ul>
-        <div id="var-dialog-modal" title="Modify variable">
-  			<p>working!!!</p>
-		</div>
-    </div>
-     
- </div>
- 
- <div data-role="page" id="views_page">
-	<div data-role="header">
-		<h1>Views</h1>
-	</div><!-- /header -->
-	<div id="views_container" data-role="content">
-    	<ul id="views_links_container"></ul>
-     </div>
- </div>
-
-<div data-role="page" id="dialogPage">
-  <div data-role="header">
-    <h2>Dialog</h2>
-  </div>
-  <div data-role="content">
-    <p>I am a dialog</p>
-  </div>
-</div>
-
-    
-<div data-role="page" id="error_container" style="display:none">
-	Wrong lab connection parameters!!!
-</div>
 
 </body>
 </html>

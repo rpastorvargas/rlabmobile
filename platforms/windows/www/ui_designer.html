@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web Experiment Client for RELATED labs</title>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web Experiment Client for RELATED labs">
+  <meta name="author" content="Rafael Pastor Vargas">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/experimentPanel.css">
+    <link rel="stylesheet" type="text/css" href="css/offcanvas.css">
+
+<style>
+    fieldset {
+      border: 0;
+    }
+    label {
+      display: block;
+      margin: 30px 0 0 0;
+    }
+    select {
+      width: 200px;
+    }
+    .overflow {
+      height: 200px;
+    }
+  </style>
+  
+</head>
+
+<body>
+
+<!-- Main content -->   
+<div class="container main_div">
+
+	<div class="row">
+      
+		<div class="col-xs-8 col-sm-10 col-md-10">
+        	<h1>EDITOR COMPONENTS</h1>
+            <h4>Laboratory: <span id="lblLabName">Poner nombre aqui</span></h4>
+            <h4>Experiment: <span id="lblExpName">Poner nombre aqui</span></h4>
+        </div>
+        <div class="col-xs-4 col-sm-2 col-md-2 text-center">
+        	<button id="btnSelect" type="button" class="btn btn-info">Select</button>
+        	<i class="fa fa-user fa-2x"></i>&nbsp;<span id="username" class="badge">User</span>
+        </div>
+    </div>
+    
+    <div class="row">
+      
+		<div id="uicomponents_container" class="col-xs-2 col-sm-2 col-md-2">
+ 
+ 		</div>
+        <div id="design_area" class="col-xs-10 col-sm-10 col-md-10">
+ 			<div class="thumbnail" style="height:100%;">
+            	<p class="text-center">AREA DE DISEÑO</p>
+            </div>
+ 		</div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="dlgLabSelection" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Select lab/experiment</h4>
+      </div>
+      <div class="modal-body">
+      		<form action="#">
+              <fieldset>
+                <label for="systems">Laboratories: </label>
+                <br/>
+                <select name="systems" id="systems" class="form-control">
+                </select>
+              </fieldset>
+              <fieldset>
+                <label for="experiments">Experiments for lab: </label>
+                <br/>
+                <select name="experiments" id="experiments" class="form-control"></select>
+              </fieldset>
+             
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="btnSelectLabExp" type="button" class="btn btn-primary">Select</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<script type="text/javascript" src="js/rlab_services_systems.js"></script>
+<!-- SOAP service javascript library -->
+<script type='text/javascript' src='js/jquery.soap.js'></script>
+<script type='text/javascript' src='js/jquery.xml2json.js'></script>
+<script type="text/javascript" src='js/jquery.base64.js'></script>
+<!-- REST js library -->
+<script type="text/javascript" src='js/rlab_library.js'></script>
+
+
+<script type="text/javascript">
+	var _user = null;
+	var _labs = null;
+	// Lab Id
+	var _selected_lab = null;
+	var _selected_lab_name = null;
+	var _experiments_of_lab = null;
+	// Experiment name
+	var _selected_experiment = null;
+	// UI Components in the experiment
+	var graphs = null;
+	var views = null;
+	
+	$('document').ready(function(e) {
+		
+		
+		$('#systems').on('change', function() {
+			if (typeof this.value != "undefined"){
+				_selected_lab = this.value;
+				buildExperimentsMenu(_selected_lab);
+		   }
+		});
+		
+		$( "#experiments" ).on('change', function() {
+			if (typeof this.value != "undefined"){
+				_selected_experiment = this.value;
+		   }
+		});
+		
+		$('#btnSelectLabExp').on('click', function() {
+			getUIComponents();
+			$('#dlgLabSelection').modal('hide');
+			// Update the list
+			updateComponents();
+			// Set names
+			$('#lblLabName').html(_selected_lab_name);
+			$('#lblExpName').html(_selected_experiment);
+			
+		});
+
+		$('#btnSelect').on('click', function() {
+			$('#dlgLabSelection').modal('show');
+		});
+		
+		// Load labs
+		if (localStorage.uidesigner_labs_info != null){
+			var labs_info = JSON.parse(localStorage.uidesigner_labs_info);
+			_user = labs_info.user;
+			_labs = labs_info.labs;
+			$('#username').html(_user);
+			buildLaboratoriesMenu(_labs);
+			// Show the selection dialog
+			$('#dlgLabSelection').modal();
+		}
+		else {
+			window.location = "login_related.html";
+		}
+    });
+	
+	function buildLaboratoriesMenu(labs){
+		if (Array.isArray(labs)){
+			var n = labs.length;
+			$('#systems').append($('<option></option>').val("0").html("Select a laboratory from list..."));
+			for (var i=0; i<n; i++){
+				$('#systems').append($('<option></option>').val(labs[i].ID).html(labs[i].name));
+			}
+		} else if (typeof labs === "object" &&
+			labs["xsi:nil"] != "true"){
+			// Only one experiment
+			$('#systems').append($('<option></option>').val("0").html("Select the laboratory..."));
+			$('#systems').append($('<option></option>').val(labs.ID).html(labs.name));
+		} else {
+			// No laboratories
+			$('#experiments').append($('<option></option>').val("-1").html("No laboratories available..."));
+		}
+		//$( "#systems" ).selectmenu("refresh"); 
+	}
+	
+	function buildExperimentsMenu(selectedLab){
+		// Get experiments from lab
+		_experiments_of_lab = RLAB.SERVICES.SYSTEMS.getExperiments(selectedLab);
+		if (Array.isArray(_experiments_of_lab)){
+			var n = _experiments_of_lab.length;
+			$('#experiments').html("");
+			$('#experiments').append($('<option></option>').val("0").html("Select an experiment from list..."));
+			for (var i=0; i<n; i++){
+				$('#experiments').append($('<option></option>').val(_experiments_of_lab[i].experiment_name).html(_experiments_of_lab[i].experiment_name));
+			}
+		}
+		else if (typeof _experiments_of_lab === "object" && 
+				_experiments_of_lab["xsi:nil"] != "true"
+				){
+			// Only one experiment
+			$('#experiments').html("");
+			$('#experiments').append($('<option></option>').val("-1").html("Select the experiment"));
+			$('#experiments').append($('<option></option>').val(_experiments_of_lab.experiment_name).html(_experiments_of_lab.experiment_name));		
+		} else {
+			$('#experiments').html("");
+			$('#experiments').append($('<option></option>').val("-1").html("No experiments defined"));
+		}
+		//$( "#experiments" ).selectmenu("refresh"); 
+	}
+	
+	function getUIComponents(){
+	
+		// Set the UI componentes from lab/experiment
+		
+		// Create lab object
+		var lab = new Object();
+		var lab_info = RLAB.SERVICES.SYSTEMS.getSystemInfo(_selected_lab);
+		lab.ip = lab_info.IP;
+		lab.port = lab_info.rest_port;
+		lab.id = _selected_lab;
+		_selected_lab_name = lab_info.name;
+		// Graphs
+		graphs = getGraphsInfo(lab,_selected_experiment);
+		
+		// Views
+		var viewNames = getWebViewsFromExperiment(lab,_selected_experiment);
+		var viewUrls = getWebViewsUrlsFromExperiment(lab,_selected_experiment);
+		var viewDescriptions = getWebViewsDescriptionsFromExperiment(lab,_selected_experiment);
+		
+		if (viewNames != null){
+			views = new Array();
+			var n = viewNames.length;
+			for (var i=0; i<n; i++){
+				var a_view = new Object();
+				a_view.name = viewNames[i];
+				a_view.description = viewDescriptions[i];
+				a_view.url = viewUrls[i];
+				views.push(a_view);
+			}
+		}
+	}
+	
+	function updateComponents(){
+		
+		$('#uicomponents_container').html("");
+		$.each(graphs, function( index, value ) {
+			var div_graph = '<div class="thumbnail" style="display:inline-block; width:150px;">';
+			div_graph += '<img src="img/graph_block.png" width="75px" heigth="75px"/>';
+			div_graph += '<div class="caption">';
+			div_graph += '<h3>Graph-' + index + '</h3>';
+			div_graph += '<p>';
+			$.each(value.names, function( index, value ) {
+				div_graph += value + " ";
+			});
+			div_graph += '</p>';
+			div_graph += '</div></div>';
+		  $('#uicomponents_container').append(div_graph);
+		});
+
+		$.each(views, function( index, value ) {
+			var div_view = '<div class="thumbnail" style="display:inline-block; width:150px;">';
+			div_view += '<img src="img/view_block.jpg" width="75px" heigth="75px"/>';
+			div_view += '<div class="caption">';
+			div_view += '<h3>' + value.name + '</h3>';
+			div_view += '<p>';
+			div_view += value.description
+			div_view += '</p>';
+			div_view += '</div></div>';
+		  	$('#uicomponents_container').append(div_view);
+		});
+		
+		
+	}
+</script>    
+</body>
+</html>

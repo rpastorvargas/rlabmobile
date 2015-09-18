@@ -1,0 +1,140 @@
+<!doctype html>
+<html ng-app="experimentsForLabListApp">
+<head>
+
+  <meta charset="utf-8">
+  <title>List of experiments</title>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experiment list for RELATED lab">
+  <meta name="author" content="Rafael Pastor Vargas">
+
+	<!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
+	<!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
+	<!--script src="js/less-1.3.3.min.js"></script-->
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        .circle {
+           border-radius: 50%;
+        }
+    </style>
+</head>
+<body ng-controller="experimentsForLabListAppCtrl">
+    <!-- Main content -->   
+<div class="container main_div">
+	<div class="row alert alert-info" style="margin-top:5px;">
+    	<div class="col-xs-6 col-sm-6 col-md-6">
+        	<img id="logo" src="img/related.png" width="50" height="50" style="float: left; margin: 0px 15px 15px 0px;"/>
+            <p class="hidden-xs" style="margin-top:12px;">Building labs in the easy way...</p>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+        	<div style="margin-top:10px;">
+            	<i class="fa fa-user fa-2x"></i>&nbsp;<span id="username" class="badge" style="cursor: pointer;" ng-click="logout()">{{user}}</span>
+            </div>
+        </div>
+    </div>
+        
+    <div class="row">
+       <div class="col-xs-8 col-sm-10 col-md-10">
+        	<h1><img src="img/IconLab.png" width="32px" height="32px" style="display: inline; float:left; margin-right:10px;" class="thumbnail"/>
+            	Laboratory: <small><span id="lblLabName">{{lab_info.name}}</span></small></h1>
+            <h2>Description: <small><span id="lblLabDescription">{{lab_info.description}}</span></small></h1>
+        </div> 
+        <div class="col-xs-4 col-sm-2 col-md-2">
+        	<div class="thumbnail">
+            	<h4>
+                    <p class="text-center">Status<br/>
+                    <span ng-show="lab_isAlive" class="glyphicon glyphicon-thumbs-up" data-toggle="tooltip" data-placement="top" data-original-title="Active"></span>
+                    <span ng-show="!lab_isAlive"class="glyphicon glyphicon-thumbs-down" data-toggle="tooltip" data-placement="top" data-original-title="Active"></span>
+                    </p>
+            	</h4>
+            </div>
+            <div class="thumbnail">
+            	<h4>
+                	<p class="text-center">Open Sessions<br/>
+                		<span class="badge">{{sessions_openned}}</span>
+                    </p>
+            	</h4>
+            </div>
+        </div>
+     </div>   
+        
+     <div class="row">   
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="text-center">
+                <p class="text-danger" style="margin-top:5px;">
+                    {{error}}
+                </p>
+            </div>
+        </div>
+     </div>
+    
+    <!-- List of experiments -->
+    <div class="row" style="margin-top:5px;">
+      
+        <div id="experiment_list" class="col-xs-12 col-sm-12 col-md-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Experiment name</th>
+                            <th>Slot time (min.)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="exp in experiments">
+                            <td>{{exp.experiment_name}}</td>
+                            <td>{{exp.slot_time}}</td>
+                            <td>
+                            	<span class="glyphicon glyficon-sm glyphicon-globe" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" data-original-title="Acceso" ng-show="lab_isAlive && (sessions_openned==0)" ng-click="toExperiment(exp)"></span>
+                            	<span class="glyphicon glyficon-sm glyphicon-lock" data-toggle="tooltip" data-placement="top" data-original-title="No Autorizado" ng-show="!lab_isAlive || (sessions_openned>0)"></span></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div
+		></div>
+    </div>
+       
+</div>
+   
+<!-- SCRIPT SECTION -->
+    <!-- Loaded only if cordova/phonegap is used to build the client -->
+	<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    
+	<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+    
+    <!-- SOAP service javascript library -->
+	<script type='text/javascript' src='js/jquery.soap.js'></script>
+	<script type="text/javascript" src='js/jquery.base64.js'></script>
+	<script type="text/javascript" src='js/jquery.xml2json.js'></script>
+    
+    <!-- angular js CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    
+    <script src="js/rlab_library.js" type="text/javascript"></script>
+    <script src="js/rlab_editors.js" type="text/javascript"></script>
+    <script src="js/rlab_services_systems.js" type="text/javascript"></script>
+    <script src="js/rlab_services_sessions.js" type="text/javascript"></script>
+    <script src="js/rlab_services_tokens.js" type="text/javascript"></script>
+    <script src="js/rlab_services_watchdogsignal.js" type="text/javascript"></script>
+    <script src="js/lab_main.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+
+		$('document').ready(function(e) {
+            // Load id
+            if (localStorage.lab_id == null){
+                window.location = "login_related.html?action=lab";
+			}
+        });
+	
+	</script>
+    
+</body>
+</html>

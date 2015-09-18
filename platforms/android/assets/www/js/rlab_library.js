@@ -97,7 +97,7 @@ function getRemoteModulesSystemsNames(lab,experiment){
 	var names = $(xml).find('rlabString');
 	$(names).each(function(index, element) {
         var system_name = $(this).text();
-		systems_names.push(module_name);
+		systems_names.push(system_name);
     });
 	return systems_names;
 }
@@ -138,6 +138,15 @@ function getExperimentsDescriptions(lab){
 	return experiment_descs;
 }
 
+function getExperimentTime(lab,experiment){
+	var command = 'getTime'
+	var baseUrl = createMainUrl(lab);
+	var arguments = experiment;
+	var url = encodeURI(baseUrl + command + '/' + arguments);
+	var xml = getFromUrlDirect(url);
+	
+	return parseInt(xml);
+}
 
 function getVars(lab,module){
 	var command = 'getVars'; 
@@ -175,6 +184,31 @@ function getVarsFromExperiment(lab,experiment){
 	return vars; 
 }
 
+function getParams(lab){
+	var command = 'getParams'; 
+	var baseUrl = createMainUrl(lab);
+	//var arguments = encodeURIComponent(experiment);
+	var url = baseUrl + command; // + "/" + arguments;
+	format = "json";
+	var response = getFromUrlDirect(url,format);
+	var params = new Array();
+	if( format == 'json'){
+		// No params
+		if (response != ""){
+			params = JSON.parse(response);
+			params = params.rlabParams.rlabParam;
+		}
+	}
+	else if (format=="xml") {
+		var array_params = $(response).find('rlabParam');
+		$(array_params).each(function(index, element) {
+        	var simple_param = $(this);
+			params.push(buildParam(simple_param));
+    	});
+	}
+	return params; 
+}
+
 
 function getVarByName(lab,name,module){
 	var command = 'getVarByName';
@@ -195,9 +229,45 @@ function getVarByName(lab,name,module){
 	return myVar; 
 }
 
+function getRemoteVarByName(name,module,system){
+	var command = 'getVarByName';
+	remote_lab = getRemoteLab(system);
+	var baseUrl = createMainUrl(remote_lab);
+	var argument1 = encodeURIComponent(name);
+	var argument2 = encodeURIComponent(module);
+	var url = baseUrl + command + "/" + argument1;
+	format = "json";
+	var response = getFromUrlDirect(url,format);
+	var myVar = null;
+	if (format == 'json'){
+		json_object = JSON.parse(response);
+		myVar = json_object.rlabVar;
+	} else {
+		var simple_var = $(response).find("rlabVar");
+		myVar = buildVar($(simple_var)); 
+	}
+	return myVar; 
+}
+
 function setVarByName(lab,variable,module){
 	var command = 'setVarByName';
 	var baseUrl = createMainUrl(lab);
+	var argument1 = encodeURIComponent(variable.name);
+	var argument2 = encodeURIComponent(module);
+	var url = baseUrl + command + "/" + argument1 + "/" + argument2;
+	// Add the post to value !!!
+	// data = '{ "rlabVar":' + JSON.stringify(variable) + "}";
+	data = JSON.stringify(variable);
+	// POST the value !!!
+	format = "json";
+	var returned = postToUrlDirect(url, data, format);
+	console.log(returned);
+}
+
+function setRemoteVarByName(variable,module,system){
+	var command = 'setVarByName';
+	remote_lab = getRemoteLab(system);
+	var baseUrl = createMainUrl(remote_lab);
 	var argument1 = encodeURIComponent(variable.name);
 	var argument2 = encodeURIComponent(module);
 	var url = baseUrl + command + "/" + argument1 + "/" + argument2;
@@ -257,6 +327,17 @@ function stopExperiment(lab,experiment){
 	return ok;
 }
 
+function setUserNameRunningExperiment(lab,experiment,username){
+	
+	var command = 'setUserNameRunningExperiment';
+	var baseUrl = createMainUrl(lab);
+	var arguments = username + "/" + experiment;
+	var url = encodeURI( baseUrl + command + "/" + arguments);
+	// POST
+	format = "json";
+	var returned = postToUrlDirect(url, null, format);
+	console.log(returned);
+}
 
 /*********************************************************
 /* FUNCTIONS TO GET PAINT INFO
@@ -401,7 +482,8 @@ function getLocalInteractiveVariables(lab,experiment,module){
 
 function getRemoteInteractiveVariables(lab,experiment,module,remote_system){
 	var command = 'getShowInteractiveVars';
-	var arguments = experiment + "/" + module + "/" + remote_system + "/";
+	remote_system_uri = encodeURIComponent(remote_system);
+	var arguments = experiment + "/" + module + "/" + remote_system_uri + "/";
 	var baseUrl = createMainUrl(lab);
 	var url = encodeURI(baseUrl + command + '/' + arguments);
 	var vars_names_xml = getFromUrlDirect(url);
@@ -651,6 +733,14 @@ function buildGraphsInfoFromJSON(graphs_info_json){
 	
 	if (infos!=null){
 		graphs_info = new Array();
+		// Check if is not array
+		if (!$.isArray(infos)){
+			if (typeof infos == "object"){
+				infos = [infos];
+			} else if (typeof infos == "undefined"){
+				return null;
+			}
+		}
 		for (var i = 0; i < infos.length; i++) {
     		var info = infos[i];
     		module = info.module;
@@ -681,4 +771,18 @@ function buildGraphsInfoFromJSON(graphs_info_json){
 	}
 	
 	return graphs_info;
+}
+
+function getRemoteLab(system_name){
+	// System format //host:rmi_port/ID
+	substrings = system_name.split("/");
+	remote_id = substrings[substrings.length-1]; 
+	remote_lab_info = RLAB.SERVICES.SYSTEMS.getSystemInfo(remote_id);
+	remote_lab = null;
+	if (remote_lab_info!=null){
+		remote_port = remote_lab_info.rest_port;
+		remote_host = remote_lab_info.IP;
+		remote_lab = new Lab(remote_host,remote_port,remote_id);
+	}
+	return remote_lab;
 }
