@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Allow requests to lab-services.scc.uned.es -->
-<meta http-equiv="Content-Security-Policy" content="connect-src 'self' lab-services.scc.uned.es">
 
 <!--STYLESHEETS-->
 <!-- <link href="css/login.css" rel="stylesheet" type="text/css" /> -->
@@ -18,7 +16,7 @@
         height:100%; 
         margin:0;
         padding:0;
-        /*background: url('img/motor.jpg') no-repeat center center fixed; */
+        background: url('img/motor.jpg') no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -72,8 +70,8 @@
                     <img style="margin-top: 10px;" id="logo" src="img/related.png"/>
                     <br/>
                     <i id="loading" class="fa fa-2x fa-spinner fa-spin"></i>
-                    </div>
-                <span class="label label-danger hidden" id="lblError"></span>
+                    <button id="btnAccess" type="button" class="btn btn-success hidden">...</button>
+                </div>
             </div>
         </div>       
 </div>
@@ -87,10 +85,9 @@
 <script src='js/jquery.base64.js' type="text/javascript"></script>
 <script src='js/jquery.xml2json.js' type="text/javascript"></script>   
 <!-- RELATED js libraries -->
-<script src="js/main_mobile.js" type="text/javascript"></script>
-<script src="js/rlab_services_systems.js" type="text/javascript"></script>
+<script src="js/main_index.js" type="text/javascript"></script>
+<script src="js/rlab_services_tokens.js" type="text/javascript"></script>
 <script src="js/utils.js" type="text/javascript"></script>
-<script src="conf/lab_config.js" type="text/javascript"></script>
 
 <script type="text/javascript" charset="utf-8">
 
@@ -116,23 +113,22 @@
 	});
     
     function initApp(){
-		initRunned = true;
-		var paramsOk = RLAB.CLIENT.MOBILE.checkLabParameters(onError);
-        if (paramsOk){
+        var tokenOk = RLAB.CLIENT.INDEX.checkTokenParameter(onError);
+        if (tokenOk){
             // Access to the experiment...
-            RLAB.CLIENT.MOBILE.goToLoginPage();
+            window.setTimeout(RLAB.CLIENT.INDEX.redirectToExperiment, 3000);
         } else {
 			$('#loading').addClass("hidden");
-			$('#lblError').removeClass("hidden");
-            //$('#btnAccess').html("Login");
-            //$('#btnAccess').click( function(){
-            //    window.location = "login_related.html";
-            // });
+			$('#btnAccess').removeClass("hidden");
+            $('#btnAccess').html("Login");
+            $('#btnAccess').click( function(){
+                window.location = "login_related.html";
+            });
         }
     }
     
     function onError(message){
-        $('#lblError').text(message);
+        // Nothig to do...
     }
 	
 </script>

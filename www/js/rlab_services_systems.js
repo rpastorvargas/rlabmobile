@@ -43,6 +43,7 @@ RLAB.SERVICES.SYSTEMS = ( function() {
 		var info = null;
 		_statusOk = false;
 		_errorMsg = "Invoking getSystemInfo()";
+		alert(id);
 		if (id !=null){
 			//_soap_config_systemsWS.method = 'getSystemInfo';
 			_soap_config_systemsWS.elementName = 'getSystemInfo';
@@ -54,9 +55,11 @@ RLAB.SERVICES.SYSTEMS = ( function() {
 				_statusOk = true;
 				_errorMsg = "Invocation to getSystemInfo() was successfull";
 				info = soapResponse.toJSON().Body.getSystemInfoResponse.return;
+				alert( "SSUCCESS-->" + JSON.stringify(soapResponse.toJSON()) );
 			},
 			_soap_config_systemsWS.error = function (soapResponse){
 				_errorMsg = "Invocation to getSystemInfo() error...";
+				console.log("ERROR-->" + JSON.stringify(soapResponse));
 			},
 			$.soap(_soap_config_systemsWS);			
 		} else {
