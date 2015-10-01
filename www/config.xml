@@ -48,4 +48,5 @@
     <gap:splash gap:platform="winphone" src="res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <content src="mobile.html" />
+	<gap:plugin name="cordova-plugin-whitelist" source="npm" /> 
 </widget>
