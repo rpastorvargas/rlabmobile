@@ -71,7 +71,7 @@
                     <br/>
                     <i id="loading" class="fa fa-2x fa-spinner fa-spin"></i>
                     </div>
-                <span class="label label-danger hidden" id="lblError"></span>
+                <span class="label label-danger hidden" id="lblError">Checking lab/experiment info...</span>
             </div>
         </div>       
 </div>
@@ -116,15 +116,13 @@
     function initApp(){
         var paramsOk = RLAB.CLIENT.MOBILE.checkLabParameters(onError);
         if (paramsOk){
-            // Access to the experiment...
-            RLAB.CLIENT.MOBILE.goToLoginPage();
+			setTimeout(function(){
+  				// Access to the experiment...
+            	RLAB.CLIENT.MOBILE.goToLoginPage();
+			}, 3000);       
         } else {
 			$('#loading').addClass("hidden");
 			$('#lblError').removeClass("hidden");
-            //$('#btnAccess').html("Login");
-            //$('#btnAccess').click( function(){
-            //    window.location = "login_related.html";
-            // });
         }
     }
     

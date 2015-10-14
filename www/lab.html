@@ -17,49 +17,100 @@
     <link href="css/font-awesome.min.css" rel="stylesheet">
 
     <style>
-        .circle {
-           border-radius: 50%;
-        }
+		.btn-round {
+			background-color: #d23f31;
+			border-radius: 999em;
+			width: 56px;
+			height: 56px;
+			box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+			line-height: 1;
+			font-size: 36px;
+			position: relative;
+			cursor: pointer;
+		}
+		
+		.btn-round span {
+			position: absolute;
+			 left: 0;
+			top: 50%;
+			height: 100%;
+			width: 100%;
+			text-align: center;
+			margin-top: -22px;
+			color: #FFF;
+		}
+		.green { background-color: #57A429; }
+		.blue { background-color: #38818F;}
+		.orange { background-color: #D28031; }
+		
+		.btn-round-3d {
+		  display: block;
+		  background-color: #f7f7f7;
+		  background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+		  background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7); 
+		  background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7); 
+		  background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7); 
+		  background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7); 
+		  color: #a7a7a7;
+		  margin: 5px;
+		  width: 64px;
+		  height: 64px;
+		  position: relative;
+		  text-align: center;
+		  line-height: 64px;
+		  border-radius: 50%;
+		  box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+		}
+		
     </style>
 </head>
 <body ng-controller="experimentsForLabListAppCtrl">
     <!-- Main content -->   
 <div class="container main_div">
-	<div class="row alert alert-info" style="margin-top:5px;">
+	<div class="row alert alert-info" style="margin-top:5px;margin-left:2px;margin-right:2px;">
     	<div class="col-xs-6 col-sm-6 col-md-6">
         	<img id="logo" src="img/related.png" width="50" height="50" style="float: left; margin: 0px 15px 15px 0px;"/>
             <p class="hidden-xs" style="margin-top:12px;">Building labs in the easy way...</p>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
         	<div style="margin-top:10px;">
-            	<i class="fa fa-user fa-2x"></i>&nbsp;<span id="username" class="badge" style="cursor: pointer;" ng-click="logout()">{{user}}</span>
+            	<i class="fa fa-user fa-2x"></i>&nbsp;<span class="hidden-xs">Connected as </span><span id="username" class="badge" style="cursor: pointer;" ng-click="logout()">{{user}}</span>
             </div>
         </div>
     </div>
-        
+    
     <div class="row">
-       <div class="col-xs-8 col-sm-10 col-md-10">
-        	<h1><img src="img/IconLab.png" width="32px" height="32px" style="display: inline; float:left; margin-right:10px;" class="thumbnail"/>
-            	Laboratory: <small><span id="lblLabName">{{lab_info.name}}</span></small></h1>
-            <h2>Description: <small><span id="lblLabDescription">{{lab_info.description}}</span></small></h1>
-        </div> 
-        <div class="col-xs-4 col-sm-2 col-md-2">
-        	<div class="thumbnail">
-            	<h4>
-                    <p class="text-center">Status<br/>
-                    <span ng-show="lab_isAlive" class="glyphicon glyphicon-thumbs-up" data-toggle="tooltip" data-placement="top" data-original-title="Active"></span>
-                    <span ng-show="!lab_isAlive"class="glyphicon glyphicon-thumbs-down" data-toggle="tooltip" data-placement="top" data-original-title="Active"></span>
-                    </p>
-            	</h4>
-            </div>
-            <div class="thumbnail">
-            	<h4>
-                	<p class="text-center">Open Sessions<br/>
-                		<span class="badge">{{sessions_openned}}</span>
-                    </p>
-            	</h4>
+    	<div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="text-center">
+                <h4 class="hidden-xs">Lab status</h4>
+                <div style="display: inline-block;">
+                    <div class="btn-round-3d">
+                        <span ng-show="lab_isAlive" class="glyphicon glyphicon-thumbs-up" data-toggle="tooltip" data-placement="top" data-original-title="Active"></span>
+                        <span ng-show="!lab_isAlive"class="glyphicon glyphicon-thumbs-down" data-toggle="tooltip" data-placement="top" data-original-title="Inactive"></span>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+        	<div class="text-center">
+                <h4 class="hidden-xs">Running Sessions</h4>
+                <div style="display: inline-block;">
+                    <div class="btn-round-3d">
+                        <span>{{sessions_openned}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-12">
+        	<h2><!--<img src="img/IconLab.png" width="32px" height="32px" style="display: inline; float:left; margin-right:10px;" class="thumbnail"/>-->
+            	Laboratory: <small><span id="lblLabName">{{lab_info.name}}</span></small></h2>
+            <h3>Description: <small><span id="lblLabDescription">{{lab_info.description}}</span></small></h3>
+        </div> 
+        
      </div>   
         
      <div class="row">   
@@ -72,16 +123,16 @@
         </div>
      </div>
     
-    <!-- List of experiments -->
-    <div class="row" style="margin-top:5px;">
+    <!-- List of experiments SM, MD and LG table-->
+    <div class="row hidden-xs" style="margin-top:5px;">
       
         <div id="experiment_list" class="col-xs-12 col-sm-12 col-md-12">
             <div class="table-responsive">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Experiment name</th>
-                            <th>Slot time (min.)</th>
+                            <th>Experiment</th>
+                            <th>Slot time<br/>(min.)</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -99,8 +150,43 @@
             </div
 		></div>
     </div>
-       
+    
+    <!-- List of experiments XS table-->
+    <div class="row hidden-sm hidden-md hidden-lg">  
+   		<div class="text-center">  
+        	<button class="btn btn-default" type="button" data-toggle="modal" data-target="#expListModal">Experiments</button>
+        </div>
+	</div>
+
+
+<!-- End of main container -->      
 </div>
+
+<div class="modal fade" id="expListModal" role="dialog" aria-labelledby="Experiment list">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Experiments</h4>
+      </div>
+      <div class="modal-body">
+        <div class="well well-sm" ng-repeat="exp in experiments">
+            <h5>{{exp.experiment_name}}&nbsp;({{exp.slot_time}} min.)</h5>
+            <div class="text-center">
+            	<h4>
+                <span class="glyphicon glyficon-sm glyphicon-globe" style="cursor:pointer;" data-toggle="tooltip" data-placement="top" data-original-title="Acceso" ng-show="lab_isAlive && (sessions_openned==0)" ng-click="toExperiment(exp)"></span>
+                <span class="glyphicon glyficon-sm glyphicon-lock" data-toggle="tooltip" data-placement="top" data-original-title="No Autorizado" ng-show="!lab_isAlive || (sessions_openned>0)"></span>
+                </h4>
+            </div>
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
    
 <!-- SCRIPT SECTION -->
     <!-- Loaded only if cordova/phonegap is used to build the client -->
@@ -127,6 +213,16 @@
     
     <script type="text/javascript">
 
+		document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+			// Register the event listener
+			document.addEventListener("backbutton", onBackKeyDown, false);
+    	}
+		
+		function onBackKeyDown() {
+    		console.log("back button presed");
+		}
+		
 		$('document').ready(function(e) {
             // Load id
             if (localStorage.lab_id == null){
