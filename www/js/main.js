@@ -2,6 +2,8 @@
 
 var related = (function() {
   	
+    // Mobile environment
+    var _mobile = false;
 	// Module variables
 	var _initiated = false;
 	
@@ -77,6 +79,9 @@ var related = (function() {
 	// Last tab index selected
 	// First by default
 	var _graph_tab_index = 0;
+    // Graphs timer
+    var _timerGraphsUpdateId;
+    var _timerGraphsUpdateInterval = 1000; // 1 second
 	//////////////////////////////////////////////////////////////////////
 	
 	
@@ -84,10 +89,14 @@ var related = (function() {
 	var _showingContainer = 'session_info_content';
 	
 	
-	// Wait for openned connection
-	// $("#startstopBtn").attr("disabled", "disabled");
+	var _setMobile = function (mobile){
+        _mobile = mobile;
+    }
 	
-	var _onBeforeExit = function(){
+	var _onBeforeExit = function(advise){
+        // If advise is defined then takes the advise value is "true", otherwise the
+        // advise value will be the parameter
+        advise = advise || "true";
 		// Check if experiment is running
 		if (_running){
 			// Stop the experiment
@@ -103,7 +112,9 @@ var related = (function() {
 			// This action close the session also
 			_session_stop_time = new Date();
 			$('#session_stop_datetime').html(_session_stop_time.toLocaleString());
-			return "Session was closed. If you want to see the experimental data, do not go out and press the toolbar button";
+            if (advise=="true"){
+                return "Session was closed. If you want to see the experimental data, do not go out and press the toolbar button";
+            }
 		} /*else {
 			if (session != null){
 				rlab_closeSession(_session);
@@ -114,6 +125,15 @@ var related = (function() {
 	var _onExit = function(){
 		
 	}
+    
+    var _quit = function(){
+      _onBeforeExit("false");  
+        if (_mobile){
+            history.go(-2);
+        } else {
+            window.location = "goodbye.html";
+        }
+    }
 	
     var _loadDataFromLocalStorage = function (){
         var tokenOk = false;
@@ -341,8 +361,8 @@ var related = (function() {
 				}*/
 				
 				// Create chart in the document as a row inside objects_container!!!						
-				var html_element = '<div class="row clearfix"><div class="col-md-12 column">';
-				html_element += '<div id="panel-' + container_name + '" class="panel panel-primary hide">';
+				//var html_element = '<div class="row clearfix" style="height:95%;"><div class="col-md-12 column" style="height:90%;">';
+				var html_element = '<div id="panel-' + container_name + '" class="panel panel-primary hide" style="height:100%;">';
 				//html_element += '<div id="panel-' + container_name + '" class="panel panel-primary">';
 				html_element += '<div class="panel-heading"><h3 class="panel-title">';
 				html_element += '<i class="fa fa-bar-chart-o"></i> ' + tab_title;
@@ -353,7 +373,7 @@ var related = (function() {
 				html_element += '</div>'; // End of wrapper
                 html_element += '</div>'; // End of panel body
 				html_element += '</div>'; // End of panel-primary
-				html_element += '</div></div>'; // End or row
+				// html_element += '</div></div>'; // End or row
             	
 				// Add to carousel
 				// Indicator
@@ -383,6 +403,37 @@ var related = (function() {
 			}
 			$("#graphs_menu_icon").removeClass('fa-spin');
 			//$("#graphs_menu_icon_number").html(graphs_info.length);
+            if (graphs_info.length>0){
+                $("#noGraphsText").remove();
+                // Swipe gestures
+                $.each(_charts, function( index, aChart ) {
+                    var element = document.getElementById(aChart.container);
+                    var mc = new Hammer(element);
+                    mc.on("swipeleft", function (event){
+                        var nextcontainer = null;
+                        // Next graph
+                        if (index<graphs_info.length-1){
+                           nextcontainer = _charts[index+1].container;     
+                        } else {
+                           nextcontainer = _charts[0].container;
+                        }
+                        related.show(nextcontainer,'modal-graphs');
+                    });
+                    mc.on("swiperight", function (event){
+                        var beforecontainer = null;
+                        // // Before graph
+                        if (index==0){
+                            beforecontainer = _charts[graphs_info.length-1].container;    
+                        } else {
+                            beforecontainer = _charts[index-1].container; 
+                        }
+                        related.show(beforecontainer,'modal-graphs');
+                    });
+                });
+            } else {
+                // Hide the option in the side bar
+                $('#id="graphs-vars-menu').addClass("hidden");
+            }
 		} 
 	}
 	
@@ -421,9 +472,23 @@ var related = (function() {
             },
 			reflow: false,
             title: { text: title_graph },
-            xAxis: { title: { text: 'Time'}, type: 'linear' },
-            yAxis: {  title: { text: 'Values' } }, //, plotLines: createPlotLines(names,colors) },
-            exporting: {enabled: true}
+            xAxis: { 
+                title: { 
+                    text: 'Time'
+                }, 
+                type: 'linear' 
+            },
+            yAxis: {
+                minPadding: 0.2,
+                maxPadding: 0.2,
+                labels: {
+                    format: "{value:.2f}"
+                },
+                title: { 
+                    text: 'Values' 
+                } 
+            }, //, plotLines: createPlotLines(names,colors) },
+            exporting: {enabled: false}
         });
 		_createSeries(chart, graph_info['names'], graph_info['colors']);
 		return chart;
@@ -468,7 +533,7 @@ var related = (function() {
 				var v = parseFloat(value); 
 				// Value to add to the serie, redraw, shift
 				var shift = time>_max_seconds_graphs;
-				// Last arguument: animation
+				// addPoint (Object options, [Boolean redraw], [Boolean shift], [Mixed animation])
 				serie.addPoint([time,v], false, shift,false);
 				//console.log("Associated with. " + serie.yAxis);
 				//console.log('Added value to ' + serie.name + ', total:' + serie.data.length);
@@ -514,6 +579,12 @@ var related = (function() {
 		}
 		$("#vars_menu_icon").removeClass('fa-spin');
 		//$("#vars_menu_icon_number").html(entries_number);
+        if(entries_number>0){
+            $("#noVariablesText").remove();
+        } else {
+            // Hide the option in the side bar
+            $('#id="li-vars-menu').addClass("hidden");
+        }
 	}
 	
 	_createInteractiveVarsDiv = function (module_name,interactive_variables_module,remote,system_name){
@@ -535,8 +606,8 @@ var related = (function() {
 		ul_ref.append(li_ref);
 		
 		// Create chart in the document as a row inside objects_container!!!						
-		var html_element = '<div class="row clearfix"><div class="col-md-12 column">';
-		html_element += '<div id="panel-' + container_name + '" class="panel panel-primary hide">';
+		// var html_element = '<div class="row clearfix" style="height:95%;"><div class="col-md-12 column" style="height:90%;">';
+		var html_element = '<div id="panel-' + container_name + '" class="panel panel-primary hide">';
 		//html_element += '<div id="panel-' + container_name + '" class="panel panel-primary">';
 		html_element += '<div class="panel-heading"><h3 class="panel-title">';
 		html_element += '<i class="fa fa-tasks"></i> Variables for module: ' + module_name;
@@ -545,10 +616,10 @@ var related = (function() {
 		}
 		html_element += '</h3></div>';
 		html_element += '<div class="panel-body">';
-		html_element += '<div id="' + container_name + '"></div>';
+		html_element += '<div id="' + container_name + '" style="height:100%;"></div>';
 		html_element += '</div>'; // End of panel body
 		html_element += '</div>'; // End of panel-primary
-		html_element += '</div></div>'; // End or row
+		// html_element += '</div></div>'; // End or row
             	
 		// Item
 		/*var carousel_item = "<div class='item'>";
@@ -623,7 +694,7 @@ var related = (function() {
                 html_element += '<div class="iframe_general_style" id="iframe-' + container_name + '"></div>';
                 html_element += '</div>'; // End of panel body
 				html_element += '</div>'; // End of panel-primary
-				html_element += '</div></div>'; // End or row
+				// html_element += '</div></div>'; // End or row
             	
 				
 				// Item
@@ -651,6 +722,12 @@ var related = (function() {
 		} 
 		$("#views_menu_icon").removeClass('fa-spin');
 		//$("#views_menu_icon_number").html(entries_number);
+        if(entries_number>0){
+            $("#noViewsText").remove();
+        } else {
+            // Hide the option in the side bar
+            $('#id="li-views-menu').addClass("hidden");
+        }
 	}
 	
 	_configureFrame = function(id) {
@@ -685,12 +762,18 @@ var related = (function() {
 			// Calling corresponding rest service
 			ok = startExperiment(_lab,_experiment_name);
 			if(ok==true){
-				_resetChartsData();
+				// Init graphs
+                _resetChartsData();
+                // Start graphs updater timer
+                _timerGraphsUpdateId = setInterval(_updateDataTimerFunction, _timerGraphsUpdateInterval);
+                // Invoke init event on web views    
 				_invokeStartEventOnWebViews();
-				$("#startstopBtn").text("Stop");
 				_running = true;
 				$("#startstopBtn").removeClass('btn-success');
 				$("#startstopBtn").addClass('btn-danger');
+                $("#btnStartStopText").text("Stop");
+                $("#btnStartStopIcon").removeClass("fa-play");
+                $("#btnStartStopIcon").addClass("fa-stop");
 				$("#running_icon").removeClass('hide');
 			} else {
 				$("#error_div").text("Error starting experiment!!!");
@@ -705,11 +788,15 @@ var related = (function() {
 		var ok = stopExperiment(_lab, _experiment_name);
 		if (ok==true){
 			_invokeStopEventOnWebViews();
-			$("#startstopBtn").text("Start");
 			_running = false;
+            // Stop the graphs updater timer
+            clearInterval(_timerGraphsUpdateId);
 			$("#startstopBtn").removeClass('btn-danger');
 			$("#startstopBtn").addClass('btn-success');
 			$("#running_icon").addClass('hide');
+            $("#btnStartStopText").text("Start");
+            $("#btnStartStopIcon").removeClass("fa-stop");
+            $("#btnStartStopIcon").addClass("fa-play");
 			// New experiment session
 			_experiment_sessions++;
 		} else {
@@ -774,6 +861,20 @@ var related = (function() {
 	///////////////////////////////////////////////////////////
 	
 	
+    ///////////////////////////////////////////////////////////
+	//	UPDATE DATA TIMER: 1 second
+	///////////////////////////////////////////////////////////
+    _updateDataTimerFunction = function() {
+        // Redraw charts, only if page of graphs is showing !!!
+        for (j=0; j<_charts.length; j++){
+            // Only redraw the visible
+            if (_showingContainer == (_charts[j])['container']){
+                var chart_to_redraw = (_charts[j])['chart'];
+                chart_to_redraw.redraw();
+            }
+        }        
+    }
+    
 	///////////////////////////////////////////////////////////
 	//	CALLBACKS FOR WEBSOCKET USING IN SESSION
 	///////////////////////////////////////////////////////////
@@ -781,9 +882,11 @@ var related = (function() {
 	// Callback function used to get data received!!!
 	_onDataReceived = function(data){
 		if (data.command=="data"){
+            t1 = performance.now();
 			var dataOnExp = data.data;
 			var time = dataOnExp.sealed_time;
 			time = time/1000;
+    //        $('#profileArea').append("," + time);
 			formattedTime = _formatSecondsAsTime(time,null);
 			$("#elapsed_time_div").html("<strong>" + formattedTime + "</strong>");
 			if (_experiment_time != 0){
@@ -807,6 +910,7 @@ var related = (function() {
 					var index = $.inArray(var_name, names);
 					if (index>=0){
 						var chart_to_add = (_charts[j])['chart'];
+                        // Also draw the point !!!
 						_updateData(chart_to_add,var_name, single_var.value, time);
 					}
 				}
@@ -819,7 +923,8 @@ var related = (function() {
 					}
 				}
 			}
-			try {
+            /* MOVE AS A TIMER FUNCTION */
+			/*try {
 				// Redraw charts, only if page of graphs is showing !!!
 				for (j=0; j<_charts.length; j++){
 					// Only redraw the visible
@@ -830,7 +935,7 @@ var related = (function() {
 				}
 			} catch(err){
 				console.error(err.message);
-			}
+			} */
 			
 			// Views
 			if (variables.length>0){
@@ -855,6 +960,9 @@ var related = (function() {
 					_startstopBtnOnclick(null);
 				}
 			}
+            // End of data command
+            t2 = performance.now();
+    //        $('#profileArea').append(","+(t2-t1).toFixed(2) + "\n");
 		}
 	}
 	
@@ -940,7 +1048,7 @@ var related = (function() {
 		session = RLAB.SERVICES.SESSIONS.getLastSessionByUser(_lab.id, _username);
 		// Get the last session		
 		if (session != null){
-			url = "http://lab.scc.uned.es/html5/related/experimentaldataapp/index.html?sessionId="+  session.ID;
+			url = "http://lab-services.scc.uned.es/html5/related/experimentaldataapp/index.html?sessionId="+  session.ID;
 			var html_msg = "<div class='center'>";
 			data_button = "<button id='show-session-" + session.ID + "'  class='btn btn-warning btn-lg active'";
 			data_button+= "onclick=\"window.open('"+url+"','data','width=900,height=650');$('#info_div').modal('hide');\" ";
@@ -1090,7 +1198,7 @@ var related = (function() {
 				value = values[j];  
 				array_value = array[i][key];
 				ok = ok && ( array_value == value);
-				console.log("Comparing '" + escape(array[i][key]) + "' with '" + escape(value) + "' --> " + ok);
+	//			console.log("Comparing '" + escape(array[i][key]) + "' with '" + escape(value) + "' --> " + ok);
 				if (!ok){
 					break;
 				}
@@ -1243,6 +1351,8 @@ var related = (function() {
         init: initApp,
 		onExit: _onExit,
 		onBeforeExit: _onBeforeExit,
+        setMobile: _setMobile,
+        quit: _quit,
 		// Send data
 		send: sendDataToLab,
 		// Must be declared to be used for HTML elements

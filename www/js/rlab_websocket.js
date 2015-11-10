@@ -103,6 +103,8 @@ function Session(host,port,userName,experimentName,slotTime,
  
     Session.prototype._onmessage = function(m) {
 		// data is json format...
+        // console.log("Message size: " + m.data.length);
+        // $('#profileArea').append("WS Message size: " + m.data.length);
 		var object = JSON.parse(m.data);
 		for (var i = 0; i < this.session.onDataReceived.length; i++) {
     		this.session.onDataReceived[i](object);

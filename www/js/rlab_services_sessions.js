@@ -83,7 +83,7 @@ RLAB.SERVICES.SESSIONS = ( function() {
 			_soap_config.success = function (soapResponse){
 				_statusOk = true;
 				_errorMsg = "Invocation to getLastSessionByUser() was successfull";
-				object = soapResponse.toJSON().Body.getOpenSessionsForSystemResponse.return;
+				object = soapResponse.toJSON().Body.getLastSessionByUserResponse.return;
 				if ( object!=null && ( !(typeof object.ID =="undefined") || (object.ID != null) )){
 					info = object;
 				}

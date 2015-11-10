@@ -158,9 +158,14 @@ body {
 }
 
 #navbar{
-	background-color:transparent !important;
-	background-image:none !important;
+	/*background-color:transparent !important;
+	background-image:none !important;*/
 	border:hidden !important;
+    margin-bottom: 5px !important;
+}
+
+.navbar-toggle {
+    border: 0px;
 }
 
 #collapse-button{
@@ -186,7 +191,7 @@ body {
 
 .footerSlideContainer {
 	position: fixed;
-	z-index:10;
+	z-index:100;
 	bottom:0;
 	width: 100%;
 }
@@ -204,7 +209,7 @@ body {
 }
 
 .footerSlideText {
-	padding: 5px 2px 2px 5px;
+	padding: 10px 2px 2px 5px;
 }
 
 .wrapText{
@@ -232,4 +237,102 @@ body {
   opacity: 0.4;
   filter: alpha(opacity=40);
   cursor: pointer;
+}
+
+// Circle butons
+round-button {
+    width: 10%;
+    height: 0;
+    padding-bottom: 10%;
+    border-radius: 50%;
+    border: 2px solid #f5f5f5;
+    overflow: hidden;
+    background: #464646;
+    box-shadow: 0 0 3px gray;
+}
+.round-button:hover {
+    background: #262626;
+}
+.round-button i {
+    display: block;
+    width: 76%;
+    padding: 12%;
+    height: auto;
+}
+
+/*.round-button {
+	width:25%;
+}
+.round-button-circle {
+	width: 100%;
+	height:0;
+	padding-bottom: 100%;
+    border-radius: 50%;
+	border:10px solid #cfdcec;
+    overflow:hidden;
+    
+    background: #4679BD; 
+    box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+	background:#30588e;
+}
+.round-button a {
+    display:block;
+	float:left;
+	width:100%;
+	padding-top:50%;
+    padding-bottom:50%;
+	line-height:1em;
+	margin-top:-0.5em;
+    
+	text-align:center;
+	color:#e2eaf3;
+    font-family:Verdana;
+    font-size:1.2em;
+    font-weight:bold;
+    text-decoration:none;
+}*/
+
+.rounded-button {
+    text-align: center;
+	float: left;
+	width: 36px;
+	height: 36px;
+	border: 2px solid #909090;
+	border-radius: 100%;
+	margin-right: 7px; /*space between*/
+    cursor: pointer;
+} 
+
+.rounded-button:hover {
+    background: #262626;
+}
+
+.rounded-button i{
+	font-size: 20px;
+    line-height: 32px;
+	color: #909090;
+}
+
+.menu-text-ellipsis-overflow {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    white-space: nowrap;
+}
+
+/*.menu-text-ellipsis-overflow:hover {
+    text-overflow: clip;
+    white-space: normal;
+    word-break: break-all;
+}*/
+
+.icon-left-text{
+    line-height: 40px;
+}
+
+// Left buttons height
+.li_icon_left{
+    height:50px;
 }
