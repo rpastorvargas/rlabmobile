@@ -228,6 +228,15 @@ var related = (function() {
 				
 				// Build charts interface
 				_createCharts(_lab,_experiment_name);
+                
+                // Add resize() event to charts
+                $( window ).resize(function() {
+                    $(Highcharts.charts).each(function(i,chart){
+                        var height = chart.renderTo.clientHeight; 
+                        var width = chart.renderTo.clientWidth; 
+                        chart.setSize(width, height); 
+                    });
+                });
 				
 				// Build interactives interface
 				_buildInteractives(_lab,_experiment_name,_local_modules,_remote_modules,_remote_systems);
@@ -248,6 +257,9 @@ var related = (function() {
 				if (_charts != null && _charts.length>0){
 					showContainer(_charts[0]['container']);
 				}
+                
+                // Gestures por app
+                _setGestures();
 	
 			} else {
 				_buildMainContent(new Date().getTime(), new Date().getTime());
@@ -405,6 +417,7 @@ var related = (function() {
 			//$("#graphs_menu_icon_number").html(graphs_info.length);
             if (graphs_info.length>0){
                 $("#noGraphsText").remove();
+                /*
                 // Swipe gestures
                 $.each(_charts, function( index, aChart ) {
                     var element = document.getElementById(aChart.container);
@@ -429,7 +442,7 @@ var related = (function() {
                         }
                         related.show(beforecontainer,'modal-graphs');
                     });
-                });
+                });*/
             } else {
                 // Hide the option in the side bar
                 $('#id="graphs-vars-menu').addClass("hidden");
@@ -726,7 +739,7 @@ var related = (function() {
             $("#noViewsText").remove();
         } else {
             // Hide the option in the side bar
-            $('#id="li-views-menu').addClass("hidden");
+            $('#li-views-menu').addClass("hidden");
         }
 	}
 	
@@ -1022,7 +1035,7 @@ var related = (function() {
 			session = RLAB.SERVICES.SESSIONS.getLastSessionByUser(_lab.id, _username);
 			// Get the last session		
 			if (session != null){
-				url = "http://lab.scc.uned.es/html5/related/experimentaldataapp/index.html?sessionId="+  session.ID;
+				url = "http://lab-services.scc.uned.es/html5/related/experimentaldataapp/index.html?sessionId="+  session.ID;
 				html_msg+= "<div class='center'>";
 				data_button = "<button id='show-session-" + session.ID + "'  class='btn btn-warning btn-lg active'";
 				data_button+= "onclick=\"window.open('"+url+"','data','width=900,height=650');$('#info_div').modal('hide');\" ";
@@ -1135,6 +1148,49 @@ var related = (function() {
 		}
 	}
 	
+    
+    //////////////////////////////////////////////////////////////////////////
+	// HAMMER GESTURES FOR ALL DIVS IN CONTAINER
+	///////////////////////////////////////////////////////////////////////
+    _setGestures = function() {
+        
+        // Get all divs under objects_container
+        var divs = $('#objects_container > div')
+        if (divs!=null){
+            $.each(divs, function (index,container){
+                var mc = new Hammer(container);
+                // Swipe Left
+                mc.on("swipeleft", function(event){
+                    var nextcontainer = null;
+                    // Next 
+                    if (index<divs.length-1){
+                       nextcontainer = divs[index+1];     
+                    } else {
+                       nextcontainer = divs[0];
+                    }
+                    // Get the id of container
+                    var _id = nextcontainer.id;
+                    related.show(_id,null);    
+                });
+                // Swipe right
+                mc.on("swiperight", function (event){
+                    var beforecontainer = null;
+                    if (index==0){
+                        beforecontainer = divs[divs.length-1];    
+                    } else {
+                        beforecontainer = divs[index-1]; 
+                    }
+                    // Get the id of container
+                    var _id = beforecontainer.id;
+                    related.show(_id,null); 
+                
+                });               
+            })
+        }
+    }
+    
+    
+    
 	//////////////////////////////////////////////////////////////////////////
 	// AUXILIAR FUNCTION TO CREATE/GET ID FOR VARS
 	////////////////////////////////////////////////////////////////////////
@@ -1199,7 +1255,7 @@ var related = (function() {
 				array_value = array[i][key];
 				ok = ok && ( array_value == value);
 	//			console.log("Comparing '" + escape(array[i][key]) + "' with '" + escape(value) + "' --> " + ok);
-				if (!ok){
+				if (ok){
 					break;
 				}
 			}

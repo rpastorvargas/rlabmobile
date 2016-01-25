@@ -46,10 +46,10 @@ RLAB.CLIENT.INDEX = ( function() {
                     _slot_time = (_stopTime - _startTime)/1000/60 ; // Minutes 
                 }
             }
-        } else {
+        } /*else {
             // Update UI
             onErrorCheckingToken("Invalid parameters to access to the laboratory/experiment");
-        }
+        }*/
         return ok;
     }
     

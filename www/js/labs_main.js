@@ -46,40 +46,65 @@ labListApp.controller("labListAppCtrl", ["$scope", "$window", function($scope,$w
         }
     }
     // Controller Functions
-    $scope.loadExperiments = function(id){
-        $scope.experiments = RLAB.SERVICES.SYSTEMS.getExperiments(id);
-        if (!Array.isArray($scope.experiments)){
-			if (typeof $scope.experiments === "object" && 
-				$scope.experiments["xsi:nil"] != "true"
+    $scope.loadExperiments = function(id, fromModal){
+        var lab_experiments = RLAB.SERVICES.SYSTEMS.getExperiments(id);
+        
+        if (!Array.isArray(lab_experiments)){
+			if (typeof lab_experiments === "object" && 
+				lab_experiments["xsi:nil"] != "true"
 				){
                 // Only one experiment
-                $scope.experiments = [$scope.experiments];
+                lab_experiments = [lab_experiments];
 		    } else {
                 // No experiments
                 var exp_null = new Object();
                 exp_null.experiment_name = "No experiments available...";
-                $scope.experiments = [exp_null];
+                lab_experiments = [exp_null];
 		    }
        }
-        $scope.selected_experiment = $scope.experiments[0];
+       if (fromModal != null && fromModal == true){
+           $scope.experiments_in_modal = lab_experiments;
+           $scope.selected_experiment_in_modal = lab_experiments[0];
+       } else {
+            $scope.experiments = lab_experiments;
+            $scope.selected_experiment = lab_experiments[0];
+       }
     }
 
-    $scope.checkLabStatus = function(id){
+    $scope.checkLabStatus = function(id, fromModal){
         if (id!=null){
-            $scope.selected_lab_isAlive = RLAB.SERVICES.SYSTEMS.STATUS.isAlive(id);
+            var alive = RLAB.SERVICES.SYSTEMS.STATUS.isAlive(id);
+            if (fromModal != null && fromModal == true){
+                $scope.selected_lab_isAlive_in_modal = alive;    
+            } else {
+                $scope.selected_lab_isAlive = alive;  
+            }
+            
         }
     }
     
     $scope.selectExperiment = function (experiment){
+        // Copy the modal values to the global
+        $scope.selected_lab = $scope.selected_lab_in_modal;
+        $scope.selected_lab_isAlive = $scope.selected_lab_isAlive_in_modal;
+        $scope.experiments = $scope.experiments_in_modal;
         $scope.selected_experiment = experiment;
         $scope.showModal = false;
+        // Get the current user booking
+        RLAB.SERVICES.BOOKINGS.getUserCurrentBooking($scope.user,
+                                                    $scope.selected_lab.ID,
+                                                    $scope.selected_experiment);
     }
     
     $scope.toExperiment = function(lab,experiment){
         // Generate token
         // Slot time? ==> maximun defined in the experiment
-        RLAB.SERVICES.TOKENS.generateToken($scope.user, $scope.pass, lab.ID, 
+        /*RLAB.SERVICES.TOKENS.generateToken($scope.user, $scope.pass, lab.ID, 
         							experiment.id,experiment.slot_time,
+        							$scope.generateTokenCallSuccess, 
+        							$scope.generateTokenCallError);*/
+        RLAB.SERVICES.TOKENS.createToken($scope.user, $scope.pass, lab.ID, 
+        							experiment.id,experiment.experiment_name,experiment.slot_time,
         							$scope.generateTokenCallSuccess, 
         							$scope.generateTokenCallError);
     }
@@ -109,15 +134,20 @@ labListApp.controller("labListAppCtrl", ["$scope", "$window", function($scope,$w
      * 
      ******************************************************************/
     $scope.showModal = false;
+    $scope.selected_lab_in_modal = null;
+    $scope.selected_lab_isAlive_in_modal = false;
+    $scope.selectedExperiment_in_modal = null;
+    $scope.experiments_in_modal = null;
+    
     $scope.toggleModal = function(lab){
         $scope.showModal = !$scope.showModal;
         if ($scope.showModal){
             // Sethe the selected lab
-            $scope.selected_lab = lab;
+            $scope.selected_lab_in_modal = lab;
             // Get status
-            $scope.checkLabStatus(lab.ID);
+            $scope.checkLabStatus(lab.ID,true);
             // Get experiments
-            $scope.loadExperiments(lab.ID);
+            $scope.loadExperiments(lab.ID,true);
         }
     }
     

@@ -235,7 +235,8 @@ function getRemoteVarByName(name,module,system){
 	var baseUrl = createMainUrl(remote_lab);
 	var argument1 = encodeURIComponent(name);
 	var argument2 = encodeURIComponent(module);
-	var url = baseUrl + command + "/" + argument1;
+	//var url = baseUrl + command + "/" + argument1;
+    var url = baseUrl + command + "/" + argument1 + "/" + argument2;
 	format = "json";
 	var response = getFromUrlDirect(url,format);
 	var myVar = null;

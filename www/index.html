@@ -16,7 +16,7 @@
         height:100%; 
         margin:0;
         padding:0;
-        background: url('img/motor.jpg') no-repeat center center fixed; 
+        background: url('img/background_lab.jpg') no-repeat center center fixed; 
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -43,7 +43,7 @@
     .bubble {  
         float:none;
         margin:0 auto;
-        background: rgb(125,126,125);
+        /*background: rgb(125,126,125); */
         /* CSS3 Box Shadow */  
         box-shadow:0 20px 30px rgba(255, 255, 255, 1), inset 0px 10px 30px 5px rgba(3, 18, 26, 0.3);  
         -webkit-box-shadow:0 20px 30px rgba(255, 255, 255, 1), inset 0px 10px 30px 5px rgba(3, 18, 26, 0.3);
@@ -53,30 +53,88 @@
         -webkit-border-radius:50%;  
         -moz-border-radius:50%;  
         
-        width: 160px;
-        height: 160px;   
+        width: 320px;
+        height: 320px;   
      } 
+    
+    .animated { 
+        -webkit-animation-duration: 5s; 
+        animation-duration: 5s; 
+        -webkit-animation-fill-mode: both; 
+        animation-fill-mode: both; 
+    } 
+
+    @-webkit-keyframes bounceIn { 
+        0% { 
+            opacity: 0; 
+            -webkit-transform: scale(.3); 
+        } 
+
+        50% { 
+            opacity: 1; 
+            -webkit-transform: scale(1.05); 
+        } 
+
+        70% { 
+            -webkit-transform: scale(.9); 
+        } 
+
+        100% { 
+             -webkit-transform: scale(1); 
+        } 
+    } 
+
+    @keyframes bounceIn { 
+        0% { 
+            opacity: 0; 
+            transform: scale(.3); 
+        } 
+
+        50% { 
+            opacity: 1; 
+            transform: scale(1.05); 
+        } 
+
+        70% { 
+            transform: scale(.9); 
+        } 
+
+        100% { 
+            transform: scale(1); 
+        } 
+    } 
+
+    .bounceIn { 
+        -webkit-animation-name: bounceIn; 
+        animation-name: bounceIn; 
+    }
+    
 </style>
     
-<title>RELATED main page</title>   
+<title>RELATED</title>   
 </head>
 
 <body>
+
+<div class="alert alert-danger alert-dismissible hidden" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>Error!</strong> <span id="errorMsg">Token seems not to be valid.</span>
+</div>
 
 <div class="container-fluid">   
         <div class="row-fluid">
             <div class="centering text-center">
                 <div class="bubble">
-                    <img style="margin-top: 10px;" id="logo" src="img/related.png"/>
-                    <br/>
+                    <img style="margin-top: 10px;" id="logo" src="img/related_logo_525_525.png" width="275" height="275" class="animated bounceIn"/>
+                    <!-- <br/>
                     <i id="loading" class="fa fa-2x fa-spinner fa-spin"></i>
-                    <button id="btnAccess" type="button" class="btn btn-success hidden">...</button>
+                    <button id="btnAccess" type="button" class="btn btn-success hidden">...</button> -->
                 </div>
             </div>
         </div>       
 </div>
 
-<script src="cordova.js" type="text/javascript"></script>
+    
 <!-- jQuery && Bootstrap -->
 <script src="js/jquery-1.11.2.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -91,45 +149,51 @@
 
 <script type="text/javascript" charset="utf-8">
 
-	var isCordovaApp = false;
-    var initRunned = false;   
-    
-	// The onDeviceReady is launched if cordova is loaded
-	document.addEventListener("deviceready", onDeviceReady, false);
-	
-	function onDeviceReady() {
-        isCordovaApp = true;
-		// Called if running on a device
-        // if not running before..
-        if (!initRunned){
-            initApp();   
-        }
-    }
 	
 	// Document ready function();
 	// A $( document ).ready() block.
 	$( document ).ready(function() {
-		initApp();
+		var animationEvent = whichAnimationEvent();
+        $('#logo').one(animationEvent, function(event) {
+            // Start main app
+            initApp();
+        });
 	});
     
     function initApp(){
         var tokenOk = RLAB.CLIENT.INDEX.checkTokenParameter(onError);
         if (tokenOk){
             // Access to the experiment...
-            window.setTimeout(RLAB.CLIENT.INDEX.redirectToExperiment, 3000);
+            RLAB.CLIENT.INDEX.redirectToExperiment();
         } else {
-			$('#loading').addClass("hidden");
-			$('#btnAccess').removeClass("hidden");
-            $('#btnAccess').html("Login");
-            $('#btnAccess').click( function(){
-                window.location = "login_related.html";
-            });
+            // Go to login page
+			window.location = "login_related.html";
         }
     }
     
     function onError(message){
-        // Nothig to do...
+        $('#errorMsg').html(message);
+        $(".alert").removeClass("hidden");
     }
+    
+    function whichAnimationEvent(){
+      var t,el = document.createElement("fakeelement");
+
+      var animations = {
+        "animation"      : "animationend",
+        "OAnimation"     : "oAnimationEnd",
+        "MozAnimation"   : "animationend",
+        "WebkitAnimation": "webkitAnimationEnd"
+      }
+
+      for (t in animations){
+        if (el.style[t] !== undefined){
+          return animations[t];
+        }
+      }
+    }
+
+    
 	
 </script>
 
