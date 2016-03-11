@@ -110,6 +110,7 @@ RLAB.CLIENT.MOBILE = ( function() {
 	function _goToLoginPage(){
 		if (_labAccess){
 			localStorage.setItem("lab_id", _lab_id);
+			localStorage.removeItem("lab_experiment_id");
 			window.location = "login_related.html?action=lab";   
 		} else if (_experimentAccess){
 			localStorage.setItem("lab_id", _lab_id);
